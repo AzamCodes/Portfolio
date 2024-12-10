@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+.floating-nav-class {
+  position: absolute;
+  right: 0;
+}
+.group:hover {
+  transform-origin: center center; /* or use top, bottom, left, etc. */
+}
+.group .relative {
+  z-index: 10; /* Ensure content is on top */
+}
+.group .absolute {
+  z-index: 5; /* Background below content */
+}
+.shadow-input-contact {
+  box-shadow: -10px -10px 30px rgba(172, 16, 203, 0.25),
+    /* Lighter purple shadow (top-left) */ 10px 10px 30px
+      rgba(53, 168, 212, 0.25),
+    /* Lighter ocean blue shadow (bottom-right) */ inset 0px 0px 15px
+      rgba(0, 0, 0, 0.05); /* Optional inset shadow (slightly dark) */
+}
+/* Tailwind Animation (Ensure this is in your global CSS or use Tailwind's extend section) */
+@keyframes gradient-border {
+  0% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #22c55e; /* Green */
+  }
+  100% {
+    border-color: #facc15; /* Yellow */
+  }
+}
+
+.group:hover .border-animation {
+  animation: gradient-border 2s infinite ease;
+}
+.cursorContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cursor {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+/* Add this in your global CSS (e.g., styles/globals.css) */
+@keyframes pulse-fast {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-fast {
+  animation: pulse-fast 1.5s ease-out infinite;
+}
