@@ -1,11 +1,5 @@
 import React from "react";
-import { Button } from "./ui/moving-border";
-import {
-  footerLinks,
-  liveProjects,
-  socialLinks,
-  usefulLinks,
-} from "../../data";
+import { liveProjects, socialLinks, usefulLinks } from "../../data";
 import Link from "next/link";
 import Newsletter from "./Newsletter";
 import FooterTime from "./Footertime";

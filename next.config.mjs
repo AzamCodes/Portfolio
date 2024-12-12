@@ -1,12 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      "assets.aceternity.com",
-      "unsplash.com",
-      "images.unsplash.com",
-      "api.microlink.io",
-    ], // Added images.unsplash.com
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "assets.aceternity.com",
+      },
+      {
+        protocol: "https",
+        hostname: "unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "api.microlink.io",
+      },
+    ], // Updated from domains to remotePatterns
   },
 };
 

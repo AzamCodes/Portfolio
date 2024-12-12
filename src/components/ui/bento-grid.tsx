@@ -19,25 +19,7 @@ export const BentoGrid = ({
   );
 };
 
-export const BentoGridItem = ({
-  className,
-  id,
-  title,
-  description,
-  img,
-  imgClassName,
-  titleClassName,
-  spareImg,
-}: {
-  className?: string;
-  id: number;
-  title?: string | React.ReactNode;
-  description?: string | React.ReactNode;
-  img?: string;
-  imgClassName?: string;
-  titleClassName?: string;
-  spareImg?: string;
-}) => {
+export const BentoGridItem = ({ className }: { className?: string }) => {
   console.log("Class provided:", className); // Debugging
   return (
     <div

@@ -15,7 +15,7 @@ export function Btn({ children, className, borderRadius }: BtnProps) {
       <Button
         borderRadius={borderRadius || "0.75rem"}
         className={cn(
-          "bg-white dark:bg-gradient-to-t dark:from-[#7e1cda] dark:to-[rgba(221,235,243,0.7)] text-black dark:text-white font-bold text-lg border-purple-400 dark:border-[inherit]",
+          "text-black dark:text-white font-bold text-lg  dark:border-[inherit] bg-gradient-to-br from-[#21D4FD] to-[#B721FF]",
           className
         )}
       >

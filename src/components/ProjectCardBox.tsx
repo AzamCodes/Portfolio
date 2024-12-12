@@ -1,19 +1,13 @@
-import Image from "next/image";
 import { DirectionAwareHover } from "./ui/direction-aware-hover";
 
 interface ProjectCardBoxProps {
   id: string;
   title: string;
   img: string;
-  shortdesc: string;
-  desc: string;
-  prevlink: () => {};
-  githubLink: string;
-  tags: string[];
 }
 
 const ProjectCardBox = ({ project }: ProjectCardBoxProps) => {
-  const { title, img, shortdesc, desc, githubLink, prevlink, tags } = project;
+  const { title, img } = project;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

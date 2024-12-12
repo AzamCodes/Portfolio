@@ -77,7 +77,7 @@ export const DirectionAwareHover = ({
           exit="exit"
         >
           {/* Bottom Shadow */}
-          <motion.div className="hidden group-hover/card:block absolute bottom-0 left-0 w-full h-2/3 bg-black/40 z-10 transition-opacity duration-500" />
+          <motion.div className="hidden group-hover/card:block absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-black/60 via-black/30 to-transparent z-10 transition-opacity duration-500" />
 
           {/* Image */}
           <motion.div

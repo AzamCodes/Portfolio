@@ -53,7 +53,7 @@ const CardRevealSection = () => {
             <CanvasRevealEffect
               animationSpeed={card.animationSpeed}
               containerClassName={card.containerClass}
-              colors={card.colors}
+              colors={card.colors ?? [[0, 255, 255]]}
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-white text-center space-y-4">
               <h2 className="text-2xl font-bold">{card.title}</h2>

@@ -13,6 +13,11 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
+      backgroundImage: {
+        "custom-gradient": "linear-gradient(315deg, #21D4FD 0%, #B721FF 100%)",
+        "custom-gradient-hover":
+          "linear-gradient(315deg, #8B44B3 0%, #351469 100%)",
+      },
       boxShadow: {
         innerCustom:
           "inset 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 -4px 6px rgba(0, 0, 0, 0.1)",
@@ -110,10 +115,10 @@ const config: Config = {
   },
   plugins: [
     addVariablesForColors,
-    function ({ matchUtilities, theme }: any) {
+    function ({ matchUtilities, theme }: { matchUtilities: any; theme: any }) {
       matchUtilities(
         {
-          "bg-dot-thick": (value: any) => ({
+          "bg-dot-thick": (value: string) => ({
             backgroundImage: `url("${svgToDataUri(
               `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none"><circle fill="${value}" id="pattern-circle" cx="10" cy="10" r="2.5"></circle></svg>`
             )}")`,
@@ -127,7 +132,13 @@ const config: Config = {
 
 export default config;
 
-function addVariablesForColors({ addBase, theme }: any) {
+function addVariablesForColors({
+  addBase,
+  theme,
+}: {
+  addBase: any;
+  theme: any;
+}) {
   const allColors = flattenColorPalette(theme("colors"));
   const newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])

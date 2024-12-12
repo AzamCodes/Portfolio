@@ -45,7 +45,7 @@ const IndividualProject = () => {
     >
       {/* X Icon for Navigation */}
       <motion.button
-        className="fixed top-8 left-8 p-4 z-50 bg-[rgba(255,255,255,0.2)] p-2 rounded-full backdrop-blur-md text-white hover:bg-gray-800 transition"
+        className="fixed top-3 p-3 sm:top-8 left-3 sm:left-8 sm:p-4 z-50 bg-[rgba(255,255,255,0.2)] rounded-full backdrop-blur-md text-white hover:bg-gray-800 transition"
         initial={{ opacity: 1, scale: 1 }} // Start with full opacity and normal scale
         animate={{
           opacity: isXClicked ? 0 : 1, // Fade out when clicked
@@ -54,12 +54,13 @@ const IndividualProject = () => {
         transition={{ duration: 0.4 }} // Smooth transition
         onClick={handleXClick}
       >
-        <X size={24} />
+        <X className="text-sm sm:text-[24px]" />
       </motion.button>
 
-      <h1 className="text-4xl font-agrandirGrandHeavy mb-4 text-green-400">
+      <h1 className="text-2xl sm:text-4xl font-agrandirGrandHeavy mb-4 text-transparent bg-[linear-gradient(160deg,_#0093E9_0%,_#80D0C7_100%)] bg-clip-text">
         {project.title}
       </h1>
+
       <Image
         src={project.img}
         alt={project.title}
@@ -70,20 +71,24 @@ const IndividualProject = () => {
       <div className="py-8">
         <ShimmerSlider tags={project.tags || []} />
       </div>
-      <p className="text-lg mb-6 max-w-2xl font-agrandirTextBold text-gray-400">
+      <p className="text-lg mb-6 max-w-2xl font-agrandirTextBold text-gray-200">
         {project.desc}
       </p>
 
       {/* Core Features Section */}
       <div className="w-full max-w-2xl mb-8">
-        <h2 className="text-2xl font-agrandirGrandHeavy tracking-wide mb-4 text-white">
+        <h2 className="text-2xl font-agrandirGrandHeavy tracking-wide mb-4 text-transparent bg-[linear-gradient(160deg,_#0093E9_0%,_#80D0C7_100%)] bg-clip-text">
           Core Features
         </h2>
-        <ul className="list-disc list-inside space-y-3 font-agrandirRegular">
+
+        <ul className="list-none space-y-4 font-agrandirTextBold text-gray-300">
           {project.coreFeatures && project.coreFeatures.length > 0 ? (
             project.coreFeatures.map((feature, index) => (
-              <li key={index} className="text-lg leading-relaxed">
-                {feature}
+              <li
+                key={index}
+                className="flex items-center space-x-2 text-lg leading-relaxed"
+              >
+                <span className="text-lg">{feature}</span>
               </li>
             ))
           ) : (
@@ -107,29 +112,27 @@ const IndividualProject = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Btn className="flex relative items-center">
-              Visit{" "}
-              <ExternalLink
-                size={15}
-                className="absolute  top-[11px] right-9"
-              />
+            <Btn className="flex relative items-center justify-center gap-2 text-sm md:text-base py-2 px-3 md:py-3 md:px-4 hover:opacity-95 transition">
+              <span className="hidden text-lg pt-1 md:inline">Visit</span>
+              <ExternalLink size={18} />
             </Btn>
-            {/* <button className="bg-[rgba(255,255,255,0.2)] text-xl items-center flex gap-2 text-white py-2 px-4 rounded-full backdrop-blur-md hover:bg-blue-600 transition">
-              <ExternalLink />
-            </button> */}
           </Link>
           <Link
             href={project.githubLink}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <button className="bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition">
-              <Github />
+            <button className="bg-[linear-gradient(315deg,_#FFDEE9_0%,_#B5FFFC_100%)] text-black py-2 px-3 md:py-3 md:px-4 rounded-lg transition flex items-center gap-2 justify-center hover:opacity-95">
+              <span className="hidden text-lg pt-1 md:inline">Github</span>
+              <Github className="text-sm" />
             </button>
           </Link>
           <Link href={`/projects/${projects[nextProjectIndex].id}`}>
-            <button className="flex items-center justify-center bg-blue-600 text-white gap-2 py-3 px-3 rounded-lg hover:bg-blue-700 transition">
-              Next Project <ArrowRight size={20} />
+            <button className="flex items-center justify-center bg-[linear-gradient(315deg,_#21D4FD_0%,_#B721FF_100%)] text-white gap-2 py-2 px-3 md:py-3 md:px-4 rounded-lg transition hover:opacity-95">
+              <span className="hidden text-lg pt-1 md:inline">
+                Next Project
+              </span>
+              <ArrowRight size={20} />
             </button>
           </Link>
         </div>

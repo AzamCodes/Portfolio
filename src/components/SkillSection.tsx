@@ -1,7 +1,4 @@
-import { FaGitAlt, FaGithub, FaNodeJs, FaReact } from "react-icons/fa";
 import { HoverEffect } from "./ui/card-hover-effect";
-import { SiExpress, SiMongodb, SiNextdotjs, SiPrisma } from "react-icons/si";
-import { RiTailwindCssFill } from "react-icons/ri";
 
 const SkillSection = () => {
   const skills = [

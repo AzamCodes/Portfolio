@@ -1,6 +1,6 @@
 "use client";
 
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { PlaceholdersAndVanishInput } from "./ui/placeholders-and-vanish-input";
 
 export function NewsletterDemo() {
@@ -18,12 +18,11 @@ export function NewsletterDemo() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success("Thank you for subscribing!");
+    toast.success("Thank you for subscribing!", { id: "subscription-toast" });
   };
 
   return (
     <div className="flex flex-col gap-2 md:gap-4 text-white">
-      <Toaster position="top-center" />
       <h1 className="text-sm md:text-base font-bold pb-2">NEWSLETTER</h1>
       <PlaceholdersAndVanishInput
         placeholders={placeholders}

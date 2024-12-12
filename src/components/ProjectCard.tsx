@@ -3,7 +3,14 @@ import React from "react";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { CardBody, CardContainer, CardItem } from "./ui/3d-card";
 
-const ProjectCard = ({ project }: any) => {
+interface Project {
+  img: string;
+  title: string;
+  shortdesc: string;
+  tags: string[];
+}
+
+const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <CardContainer className="group" style={{ perspective: "1000px" }}>
       <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-3xl p-3 border">

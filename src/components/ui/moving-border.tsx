@@ -15,24 +15,22 @@ export function Button({
   children,
   as: Component = "button",
   containerClassName,
-  borderClassName,
   duration,
   className,
   ...otherProps
 }: {
   borderRadius?: string;
   children: React.ReactNode;
-  as?: any;
+  as?: React.ElementType;
   containerClassName?: string;
-  borderClassName?: string;
   duration?: number;
   className?: string;
-  [key: string]: any;
+  [key: string]: string | number | boolean | React.ReactNode;
 }) {
   return (
     <Component
       className={cn(
-        "bg-transparent relative text-xl rounded-2xl h-14 w-40 p-[3px] overflow-hidden border border-purple-400",
+        "bg-transparent relative text-xl rounded-2xl h-12 w-fit sm:h-14 sm:w-40 p-[3px] overflow-hidden border border-purple-400",
         containerClassName
       )}
       style={{
@@ -80,9 +78,9 @@ export const MovingBorder = ({
   duration?: number;
   rx?: string;
   ry?: string;
-  [key: string]: any;
+  [key: string]: string | number | boolean | React.ReactNode;
 }) => {
-  const pathRef = useRef<any>();
+  const pathRef = useRef<SVGRectElement | null>(null);
   const progress = useMotionValue<number>(0);
 
   useAnimationFrame((time) => {
@@ -112,7 +110,7 @@ export const MovingBorder = ({
         className="absolute h-full w-full"
         width="100%"
         height="100%"
-        {...otherProps}
+        {...(otherProps as React.SVGProps<SVGSVGElement>)}
       >
         <rect
           fill="none"

@@ -1,7 +1,5 @@
 import Link from "next/link";
 import { projects } from "../../data";
-import ProjectCard from "./ProjectCard";
-import ProjectCardBox from "./ProjectCardBox";
 import { DirectionAwareHover } from "./ui/direction-aware-hover";
 
 const ProjectSection = () => {

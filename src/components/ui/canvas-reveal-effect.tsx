@@ -65,58 +65,59 @@ const DotMatrix: React.FC<DotMatrixProps> = ({
   shader = "",
   center = ["x", "y"],
 }) => {
-  const uniforms = React.useMemo(() => {
-    let colorsArray = [
-      colors[0],
-      colors[0],
-      colors[0],
-      colors[0],
-      colors[0],
-      colors[0],
-    ];
-    if (colors.length === 2) {
-      colorsArray = [
+  const uniforms: { [key: string]: { value: number[]; type: string } } =
+    React.useMemo(() => {
+      let colorsArray = [
         colors[0],
         colors[0],
         colors[0],
-        colors[1],
-        colors[1],
-        colors[1],
+        colors[0],
+        colors[0],
+        colors[0],
       ];
-    } else if (colors.length === 3) {
-      colorsArray = [
-        colors[0],
-        colors[0],
-        colors[1],
-        colors[1],
-        colors[2],
-        colors[2],
-      ];
-    }
+      if (colors.length === 2) {
+        colorsArray = [
+          colors[0],
+          colors[0],
+          colors[0],
+          colors[1],
+          colors[1],
+          colors[1],
+        ];
+      } else if (colors.length === 3) {
+        colorsArray = [
+          colors[0],
+          colors[0],
+          colors[1],
+          colors[1],
+          colors[2],
+          colors[2],
+        ];
+      }
 
-    return {
-      u_colors: {
-        value: colorsArray.map((color) => [
-          color[0] / 255,
-          color[1] / 255,
-          color[2] / 255,
-        ]),
-        type: "uniform3fv",
-      },
-      u_opacities: {
-        value: opacities,
-        type: "uniform1fv",
-      },
-      u_total_size: {
-        value: totalSize,
-        type: "uniform1f",
-      },
-      u_dot_size: {
-        value: dotSize,
-        type: "uniform1f",
-      },
-    };
-  }, [colors, opacities, totalSize, dotSize]);
+      return {
+        u_colors: {
+          value: colorsArray.map((color) => [
+            color[0] / 255,
+            color[1] / 255,
+            color[2] / 255,
+          ]),
+          type: "uniform3fv",
+        },
+        u_opacities: {
+          value: opacities,
+          type: "uniform1fv",
+        },
+        u_total_size: {
+          value: totalSize,
+          type: "uniform1f",
+        },
+        u_dot_size: {
+          value: dotSize,
+          type: "uniform1f",
+        },
+      };
+    }, [colors, opacities, totalSize, dotSize]);
 
   return (
     <Shader
@@ -192,7 +193,7 @@ const ShaderMaterial = ({
   uniforms: Uniforms;
 }) => {
   const { size } = useThree();
-  const ref = useRef<THREE.Mesh>();
+  const ref = useRef<THREE.Mesh>(null);
   let lastFrameTime = 0;
 
   useFrame(({ clock }) => {
@@ -203,56 +204,66 @@ const ShaderMaterial = ({
     }
     lastFrameTime = timestamp;
 
-    const material: any = ref.current.material;
+    const material = ref.current.material as THREE.ShaderMaterial;
     const timeLocation = material.uniforms.u_time;
     timeLocation.value = timestamp;
   });
 
-  const getUniforms = () => {
-    const preparedUniforms: any = {};
+  const getUniforms = useMemo(() => {
+    return () => {
+      const preparedUniforms: {
+        [key: string]: { value: number[] | number[][] | number; type: string };
+      } = {};
 
-    for (const uniformName in uniforms) {
-      const uniform: any = uniforms[uniformName];
+      for (const uniformName in uniforms) {
+        const uniform = uniforms[uniformName];
 
-      switch (uniform.type) {
-        case "uniform1f":
-          preparedUniforms[uniformName] = { value: uniform.value, type: "1f" };
-          break;
-        case "uniform3f":
-          preparedUniforms[uniformName] = {
-            value: new THREE.Vector3().fromArray(uniform.value),
-            type: "3f",
-          };
-          break;
-        case "uniform1fv":
-          preparedUniforms[uniformName] = { value: uniform.value, type: "1fv" };
-          break;
-        case "uniform3fv":
-          preparedUniforms[uniformName] = {
-            value: uniform.value.map((v: number[]) =>
-              new THREE.Vector3().fromArray(v)
-            ),
-            type: "3fv",
-          };
-          break;
-        case "uniform2f":
-          preparedUniforms[uniformName] = {
-            value: new THREE.Vector2().fromArray(uniform.value),
-            type: "2f",
-          };
-          break;
-        default:
-          console.error(`Invalid uniform type for '${uniformName}'.`);
-          break;
+        switch (uniform.type) {
+          case "uniform1f":
+            preparedUniforms[uniformName] = {
+              value: uniform.value,
+              type: "1f",
+            };
+            break;
+          case "uniform3f":
+            preparedUniforms[uniformName] = {
+              value: new THREE.Vector3().fromArray(uniform.value),
+              type: "3f",
+            };
+            break;
+          case "uniform1fv":
+            preparedUniforms[uniformName] = {
+              value: uniform.value,
+              type: "1fv",
+            };
+            break;
+          case "uniform3fv":
+            preparedUniforms[uniformName] = {
+              value: uniform.value.map((v: number[]) =>
+                new THREE.Vector3().fromArray(v)
+              ),
+              type: "3fv",
+            };
+            break;
+          case "uniform2f":
+            preparedUniforms[uniformName] = {
+              value: new THREE.Vector2().fromArray(uniform.value),
+              type: "2f",
+            };
+            break;
+          default:
+            console.error(`Invalid uniform type for '${uniformName}'.`);
+            break;
+        }
       }
-    }
 
-    preparedUniforms["u_time"] = { value: 0, type: "1f" };
-    preparedUniforms["u_resolution"] = {
-      value: new THREE.Vector2(size.width * 2, size.height * 2),
-    }; // Initialize u_resolution
-    return preparedUniforms;
-  };
+      preparedUniforms["u_time"] = { value: 0, type: "1f" };
+      preparedUniforms["u_resolution"] = {
+        value: new THREE.Vector2(size.width * 2, size.height * 2),
+      }; // Initialize u_resolution
+      return preparedUniforms;
+    };
+  }, [uniforms, size]);
 
   // Shader material
   const material = useMemo(() => {
@@ -279,10 +290,10 @@ const ShaderMaterial = ({
     });
 
     return materialObject;
-  }, [size.width, size.height, source]);
+  }, [source, getUniforms]);
 
   return (
-    <mesh ref={ref as any}>
+    <mesh ref={ref}>
       <planeGeometry args={[2, 2]} />
       <primitive object={material} attach="material" />
     </mesh>

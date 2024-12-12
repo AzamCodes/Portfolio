@@ -1,13 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  transform,
-  animate,
-} from "framer-motion";
+import { motion, useMotionValue, useSpring, animate } from "framer-motion";
 
 export default function StickyCursor() {
   const [isHovered, setIsHovered] = useState(false);
@@ -27,12 +21,6 @@ export default function StickyCursor() {
     y: useSpring(mouse.y, smoothOptions),
   };
 
-  const manageMouseMove = (e) => {
-    const { clientX, clientY } = e;
-    mouse.x.set(clientX - cursorSize / 2);
-    mouse.y.set(clientY - cursorSize / 2);
-  };
-
   // Set hover state on mouse enter/leave
   const manageMouseOver = () => setIsHovered(true);
   const manageMouseLeave = () => {
@@ -41,6 +29,11 @@ export default function StickyCursor() {
   };
 
   useEffect(() => {
+    const manageMouseMove = (e) => {
+      const { clientX, clientY } = e;
+      mouse.x.set(clientX - cursorSize / 2);
+      mouse.y.set(clientY - cursorSize / 2);
+    };
     document.addEventListener("mousemove", manageMouseMove);
     document.addEventListener("mouseenter", manageMouseOver);
     document.addEventListener("mouseleave", manageMouseLeave);
@@ -50,7 +43,7 @@ export default function StickyCursor() {
       document.removeEventListener("mouseenter", manageMouseOver);
       document.removeEventListener("mouseleave", manageMouseLeave);
     };
-  }, []); // Removed dependency on `isHovered`
+  }, [cursorSize, mouse.x, mouse.y]);
 
   return (
     <div className="cursorContainer">

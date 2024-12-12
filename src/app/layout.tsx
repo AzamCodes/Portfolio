@@ -1,7 +1,5 @@
 import localfont from "next/font/local";
 import { Metadata } from "next";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
 import "./globals.css";
 
 // Define different variants of Agrandir font

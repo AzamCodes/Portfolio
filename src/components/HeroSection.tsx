@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Spotlight } from "./ui/Spotlight";
-import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import { HeroHighlight } from "./ui/hero-highlight";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
 import DateDisplay from "./DateDisplay";

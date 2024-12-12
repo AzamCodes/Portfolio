@@ -28,7 +28,7 @@ const FloatingDockContainer = ({
   items: { title: string; icon: React.ReactNode; href: string }[];
   className?: string;
 }) => {
-  const mouseX = useMotionValue(Infinity);
+  const mouseX = useMotionValue<number>(Infinity);
 
   return (
     <motion.div
@@ -53,7 +53,7 @@ function IconContainer({
   icon,
   href,
 }: {
-  mouseX: any;
+  mouseX: number;
   title: string;
   icon: React.ReactNode;
   href: string;
@@ -114,7 +114,7 @@ function IconContainer({
   });
 
   // Tooltip display logic
-  const handleTouch = (event: any) => {
+  const handleTouch = (event: React.TouchEvent<HTMLDivElement>) => {
     event.preventDefault();
     setHovered(true);
     setTimeout(() => setHovered(false), 1500); // Tooltip appears for 1.5s on mobile touch

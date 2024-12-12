@@ -1,29 +1,17 @@
 "use client";
-import { useMotionValue, motion } from "framer-motion";
-import { MdMarkEmailRead } from "react-icons/md";
+import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
-import { IoDocumentText } from "react-icons/io5";
 import Framer from "./ui/Framer";
-import Image from "next/image";
 import Link from "next/link";
-import { Draggable } from "react-draggable";
-import {
-  Linkedin,
-  Github,
-  Instagram,
-  Mail,
-  SquareMenu,
-  FileText,
-} from "lucide-react";
+import { Linkedin, Github, Instagram, Mail, FileText } from "lucide-react";
 
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/Textarea";
 import { HoverEffectBox } from "./ui/HoverEffectBox";
 import { cn } from "@/utils/cn";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { sendEmail } from "@/utils/sendEmail";
 import emailjs from "emailjs-com";
 import { Spotlight } from "./ui/Spotlight";
 
@@ -33,12 +21,10 @@ export function ContactSection() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
 
-  // const form = useRef<HTMLFormElement>(null);
-
-  const triggerEmail = async (templateParams: any) => {
-    // console.log("Triggering email with params:", templateParams);
+  const triggerEmail = async (templateParams: {
+    /* specify the correct type */
+  }) => {
     try {
       await emailjs.send(
         process.env.NEXT_PUBLIC_NEXREACT_SERVICE_ID ?? "",
@@ -56,19 +42,13 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // console.log("Form submitted");
-
-    setError("");
     if (!firstname || !lastname) {
-      setError("Please enter your first and last name.");
       return;
     }
     if (!email) {
-      setError("Please enter your email.");
       return;
     }
     if (!message) {
-      setError("Please enter your message.");
       return;
     }
     setIsLoading(true);
@@ -86,9 +66,9 @@ export function ContactSection() {
       user_email: email,
     };
 
-    console.log("Template Params:", templateParams); // Log the template params to see the values
+    console.log("Template Params:", templateParams);
     triggerEmail(templateParams);
-    setIsLoading(false); // Make sure to stop the loading state after submission
+    setIsLoading(false);
   };
 
   return (
@@ -257,13 +237,6 @@ export function ContactSection() {
     </div>
   );
 }
-
-const BottomGradient = () => (
-  <>
-    <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
-    <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
-  </>
-);
 
 const LabelInputContainer = ({
   children,
