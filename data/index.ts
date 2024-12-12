@@ -67,9 +67,6 @@ export const projects = [
     id: 3,
     title: "DevBlog",
     shortdesc: "Next.js Blogging Platform",
-    id: 3,
-    title: "DevBlog",
-    shortdesc: "Next.js Blogging Platform",
     desc: `DevBlog is a modern and feature-rich blogging platform built with Next.js, Tailwind CSS, and ShadCN UI. It allows users to create, manage, and share their blogs with ease. Designed with a focus on performance and user experience, DevBlog offers an intuitive interface, responsive design, and various advanced features for both users and admins.`,
     coreFeatures: [
       "User Authentication: Secure sign-up, log-in, JWT-based authentication, email verification, and password recovery.",
