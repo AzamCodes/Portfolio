@@ -2,7 +2,7 @@ import React from "react";
 import { liveProjects, socialLinks, usefulLinks } from "../../data";
 import Link from "next/link";
 import Newsletter from "./Newsletter";
-import FooterTime from "./Footertime";
+import FooterTime from "./FooterTime";
 
 const Footer = () => {
   return (
