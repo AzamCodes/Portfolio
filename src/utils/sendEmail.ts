@@ -13,7 +13,7 @@ export const sendEmail = (templateParams: {
       process.env.NEXT_PUBLIC_NEXREACT_SERVICE_ID ?? "",
       process.env.NEXT_PUBLIC_NEXREACT_TEMPLATE_ID ?? "",
       templateParams,
-      { publicKey: process.env.NEXT_PUBLIC_NEXREACT_PUBLIC_ID! }
+      process.env.NEXT_PUBLIC_NEXREACT_PUBLIC_ID as string
     )
     .then((response) => {
       console.log("Email sent successfully:", response);

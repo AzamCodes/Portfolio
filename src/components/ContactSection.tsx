@@ -14,8 +14,11 @@ import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import emailjs from "emailjs-com";
 import { Spotlight } from "./ui/Spotlight";
+interface ContactSectionProps {
+  id: string;
+}
 
-export function ContactSection() {
+export const ContactSection: React.FC<ContactSectionProps> = ({ id }) => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
@@ -23,7 +26,11 @@ export function ContactSection() {
   const [isLoading, setIsLoading] = useState(false);
 
   const triggerEmail = async (templateParams: {
-    /* specify the correct type */
+    user_firstname: string;
+    user_lastname: string;
+    to_name: string;
+    user_message: string;
+    user_email: string;
   }) => {
     try {
       await emailjs.send(
@@ -36,6 +43,8 @@ export function ContactSection() {
     } catch (err) {
       console.error("Email sending failed:", err);
       toast.error("Something went wrong");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -68,11 +77,10 @@ export function ContactSection() {
 
     console.log("Template Params:", templateParams);
     triggerEmail(templateParams);
-    setIsLoading(false);
   };
 
   return (
-    <div className="py-24 px-4" id="contact">
+    <div className="py-24 px-4" id={id}>
       <Toaster position="top-center" />
       <div className="text-center pb-8 md:pb-12">
         <h1 className="text-5xl font-agrandirGrandHeavy z-10 -tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#F0F0F0] to-[#DADADA]">
@@ -236,7 +244,7 @@ export function ContactSection() {
       </div>
     </div>
   );
-}
+};
 
 const LabelInputContainer = ({
   children,
@@ -285,7 +293,7 @@ const SocialLink = ({
   alt,
 }: {
   href: string;
-  icon: React.ComponentType; // Accept the Lucide component
+  icon: React.ComponentType<{ className?: string }>;
   alt: string;
 }) => (
   <div className=" bg-transparent flex items-center justify-center ">
@@ -299,7 +307,7 @@ const SocialLink = ({
           rel="noopener noreferrer"
           aria-label={alt}
         >
-          <Icon className="text-neutral-700  md:text-[48px] dark:text-neutral-300" />
+          <Icon className="text-neutral-700 md:text-[48px] dark:text-neutral-300" />
         </Link>
       </div>
     </Framer>

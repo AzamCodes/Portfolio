@@ -21,6 +21,8 @@ const config: Config = {
       boxShadow: {
         innerCustom:
           "inset 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 -4px 6px rgba(0, 0, 0, 0.1)",
+        input: `0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`,
+        customShadow: `0 6px 20px rgba(0, 0, 0, 0.3)`,
       },
       fontFamily: {
         agrandirGrandHeavy: [
@@ -60,10 +62,6 @@ const config: Config = {
           ...defaultTheme.fontFamily.sans,
         ],
       },
-      boxShadow: {
-        input: `0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`,
-        customShadow: `0 6px 20px rgba(0, 0, 0, 0.3)`,
-      },
       animation: {
         spotlight: "spotlight 2s ease .75s 1 forwards",
         colorCycle: "colorCycle 2s infinite",
@@ -86,11 +84,11 @@ const config: Config = {
         },
         spotlight: {
           "0%": {
-            opacity: 0,
+            opacity: "0",
             transform: "translate(-72%, -62%) scale(0.5)",
           },
           "100%": {
-            opacity: 1,
+            opacity: "1",
             transform: "translate(-50%, -40%) scale(1)",
           },
         },
@@ -147,4 +145,8 @@ function addVariablesForColors({
   addBase({
     ":root": newVars,
   });
+}
+
+declare module "tailwindcss/lib/util/flattenColorPalette" {
+  export default function flattenColorPalette(colors: any): any;
 }

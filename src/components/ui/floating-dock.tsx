@@ -5,6 +5,7 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
+  MotionValue,
 } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
@@ -53,7 +54,7 @@ function IconContainer({
   icon,
   href,
 }: {
-  mouseX: number;
+  mouseX: MotionValue<number>;
   title: string;
   icon: React.ReactNode;
   href: string;
@@ -72,7 +73,7 @@ function IconContainer({
   }, []);
 
   // Define the transforms and springs even if not used on mobile
-  const distance = useTransform(mouseX, (val) => {
+  const distance = useTransform(mouseX, (val: number) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
     return val - bounds.x - bounds.width / 2;
   });

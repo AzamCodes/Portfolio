@@ -3,17 +3,19 @@ import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 
 // Magnetic effect component with 3D transformation
-export default function Framer({ children }) {
-  const ref = useRef(null);
+export default function Framer({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   // Handle mouse movement to calculate x, y offset for 3D effect
-  const handleMouse = (e) => {
+  const handleMouse = (e: React.MouseEvent) => {
     const { clientX, clientY } = e;
-    const { height, width, left, top } = ref.current.getBoundingClientRect();
-    const middleX = clientX - (left + width / 2);
-    const middleY = clientY - (top + height / 2);
-    setPosition({ x: middleX, y: middleY });
+    if (ref.current) {
+      const { height, width, left, top } = ref.current.getBoundingClientRect();
+      const middleX = clientX - (left + width / 2);
+      const middleY = clientY - (top + height / 2);
+      setPosition({ x: middleX, y: middleY });
+    }
   };
 
   // Reset position to center on mouse leave

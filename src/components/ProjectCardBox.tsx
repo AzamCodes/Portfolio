@@ -4,6 +4,7 @@ interface ProjectCardBoxProps {
   id: string;
   title: string;
   img: string;
+  project: { title: string; img: string };
 }
 
 const ProjectCardBox = ({ project }: ProjectCardBoxProps) => {

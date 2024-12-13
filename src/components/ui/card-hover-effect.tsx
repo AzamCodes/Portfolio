@@ -24,7 +24,13 @@ const iconComponents = {
   SiPrisma: dynamic(() => import("react-icons/si").then((mod) => mod.SiPrisma)),
 };
 
-export const HoverEffect = ({ items, className }) => {
+export const HoverEffect = ({
+  items,
+  className,
+}: {
+  items: Array<{ iconName: keyof typeof iconComponents; title: string }>;
+  className?: string;
+}) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (

@@ -65,59 +65,60 @@ const DotMatrix: React.FC<DotMatrixProps> = ({
   shader = "",
   center = ["x", "y"],
 }) => {
-  const uniforms: { [key: string]: { value: number[]; type: string } } =
-    React.useMemo(() => {
-      let colorsArray = [
+  const uniforms: {
+    [key: string]: { value: number[] | number[][]; type: string };
+  } = React.useMemo(() => {
+    let colorsArray = [
+      colors[0],
+      colors[0],
+      colors[0],
+      colors[0],
+      colors[0],
+      colors[0],
+    ];
+    if (colors.length === 2) {
+      colorsArray = [
         colors[0],
         colors[0],
         colors[0],
-        colors[0],
-        colors[0],
-        colors[0],
+        colors[1],
+        colors[1],
+        colors[1],
       ];
-      if (colors.length === 2) {
-        colorsArray = [
-          colors[0],
-          colors[0],
-          colors[0],
-          colors[1],
-          colors[1],
-          colors[1],
-        ];
-      } else if (colors.length === 3) {
-        colorsArray = [
-          colors[0],
-          colors[0],
-          colors[1],
-          colors[1],
-          colors[2],
-          colors[2],
-        ];
-      }
+    } else if (colors.length === 3) {
+      colorsArray = [
+        colors[0],
+        colors[0],
+        colors[1],
+        colors[1],
+        colors[2],
+        colors[2],
+      ];
+    }
 
-      return {
-        u_colors: {
-          value: colorsArray.map((color) => [
-            color[0] / 255,
-            color[1] / 255,
-            color[2] / 255,
-          ]),
-          type: "uniform3fv",
-        },
-        u_opacities: {
-          value: opacities,
-          type: "uniform1fv",
-        },
-        u_total_size: {
-          value: totalSize,
-          type: "uniform1f",
-        },
-        u_dot_size: {
-          value: dotSize,
-          type: "uniform1f",
-        },
-      };
-    }, [colors, opacities, totalSize, dotSize]);
+    return {
+      u_colors: {
+        value: colorsArray.map((color) => [
+          color[0] / 255,
+          color[1] / 255,
+          color[2] / 255,
+        ]),
+        type: "v3v",
+      },
+      u_opacities: {
+        value: opacities,
+        type: "uniform1fv",
+      },
+      u_total_size: {
+        value: [totalSize],
+        type: "uniform1fv",
+      },
+      u_dot_size: {
+        value: [dotSize],
+        type: "uniform1fv",
+      },
+    };
+  }, [colors, opacities, totalSize, dotSize]);
 
   return (
     <Shader
@@ -176,12 +177,15 @@ const DotMatrix: React.FC<DotMatrixProps> = ({
   );
 };
 
+type UniformValue = number | number[] | number[][];
+
 type Uniforms = {
   [key: string]: {
-    value: number[] | number[][] | number;
+    value: UniformValue;
     type: string;
   };
 };
+
 const ShaderMaterial = ({
   source,
   uniforms,
@@ -211,9 +215,7 @@ const ShaderMaterial = ({
 
   const getUniforms = useMemo(() => {
     return () => {
-      const preparedUniforms: {
-        [key: string]: { value: number[] | number[][] | number; type: string };
-      } = {};
+      const preparedUniforms: Uniforms = {};
 
       for (const uniformName in uniforms) {
         const uniform = uniforms[uniformName];
@@ -221,33 +223,39 @@ const ShaderMaterial = ({
         switch (uniform.type) {
           case "uniform1f":
             preparedUniforms[uniformName] = {
-              value: uniform.value,
+              value: uniform.value as number,
               type: "1f",
             };
             break;
           case "uniform3f":
             preparedUniforms[uniformName] = {
-              value: new THREE.Vector3().fromArray(uniform.value),
+              value: new THREE.Vector3()
+                .fromArray(uniform.value as number[])
+                .toArray(),
               type: "3f",
             };
             break;
           case "uniform1fv":
             preparedUniforms[uniformName] = {
-              value: uniform.value,
+              value: uniform.value as number[],
               type: "1fv",
             };
             break;
           case "uniform3fv":
             preparedUniforms[uniformName] = {
-              value: uniform.value.map((v: number[]) =>
-                new THREE.Vector3().fromArray(v)
-              ),
+              value: (uniform.value as number[][])
+                .map((v: number[]) =>
+                  new THREE.Vector3().fromArray(v).toArray()
+                )
+                .flat(),
               type: "3fv",
             };
             break;
           case "uniform2f":
             preparedUniforms[uniformName] = {
-              value: new THREE.Vector2().fromArray(uniform.value),
+              value: new THREE.Vector2()
+                .fromArray(uniform.value as number[])
+                .toArray(),
               type: "2f",
             };
             break;
@@ -259,8 +267,9 @@ const ShaderMaterial = ({
 
       preparedUniforms["u_time"] = { value: 0, type: "1f" };
       preparedUniforms["u_resolution"] = {
-        value: new THREE.Vector2(size.width * 2, size.height * 2),
-      }; // Initialize u_resolution
+        value: [size.width * 2, size.height * 2],
+        type: "uniform2fv",
+      };
       return preparedUniforms;
     };
   }, [uniforms, size]);

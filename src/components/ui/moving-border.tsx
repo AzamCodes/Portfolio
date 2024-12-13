@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { FunctionComponent, ElementType } from "react";
 import {
   motion,
   useAnimationFrame,
@@ -10,23 +10,26 @@ import {
 import { useRef } from "react";
 import { cn } from "@/utils/cn";
 
-export function Button({
+type ButtonProps<T extends ElementType> = {
+  borderRadius?: string;
+  children: React.ReactNode;
+  as?: T;
+  containerClassName?: string;
+  duration?: number;
+  className?: string;
+} & React.ComponentPropsWithoutRef<T>;
+
+export function Button<T extends ElementType = "button">({
   borderRadius = "0.75rem",
   children,
-  as: Component = "button",
+  as,
   containerClassName,
   duration,
   className,
   ...otherProps
-}: {
-  borderRadius?: string;
-  children: React.ReactNode;
-  as?: React.ElementType;
-  containerClassName?: string;
-  duration?: number;
-  className?: string;
-  [key: string]: string | number | boolean | React.ReactNode;
-}) {
+}: ButtonProps<T>) {
+  const Component = as || "button";
+
   return (
     <Component
       className={cn(
@@ -36,7 +39,7 @@ export function Button({
       style={{
         borderRadius: borderRadius,
       }}
-      {...otherProps}
+      {...(otherProps as React.ComponentPropsWithoutRef<T>)}
     >
       <div
         className="absolute inset-0"
@@ -67,19 +70,13 @@ export function Button({
   );
 }
 
-export const MovingBorder = ({
-  children,
-  duration = 3600,
-  rx,
-  ry,
-  ...otherProps
-}: {
+export const MovingBorder: FunctionComponent<{
   children: React.ReactNode;
   duration?: number;
   rx?: string;
   ry?: string;
   [key: string]: string | number | boolean | React.ReactNode;
-}) => {
+}> = ({ children, duration = 3600, rx, ry, ...otherProps }) => {
   const pathRef = useRef<SVGRectElement | null>(null);
   const progress = useMotionValue<number>(0);
 
@@ -135,3 +132,7 @@ export const MovingBorder = ({
     </>
   );
 };
+
+export default function Framer({ children }: { children: React.ReactNode }) {
+  return <div>{children}</div>;
+}

@@ -29,7 +29,7 @@ export default function StickyCursor() {
   };
 
   useEffect(() => {
-    const manageMouseMove = (e) => {
+    const manageMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
       mouse.x.set(clientX - cursorSize / 2);
       mouse.y.set(clientY - cursorSize / 2);

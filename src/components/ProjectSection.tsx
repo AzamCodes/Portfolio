@@ -2,10 +2,14 @@ import Link from "next/link";
 import { projects } from "../../data";
 import { DirectionAwareHover } from "./ui/direction-aware-hover";
 
-const ProjectSection = () => {
+interface ProjectSectionProps {
+  id: string;
+}
+
+const ProjectSection: React.FC<ProjectSectionProps> = ({ id }) => {
   return (
     <div
-      id="projects"
+      id={id}
       className="py-24 bg-[#000000] flex items-center justify-center flex-col"
     >
       <div className="text-center">

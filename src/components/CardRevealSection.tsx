@@ -4,6 +4,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 import { FaTools, FaPuzzlePiece, FaRocket } from "react-icons/fa"; // Import your icons
 
+interface ServiceSectionProps {
+  id: string;
+}
+
 const cardData = [
   {
     title: "Technical Expertise",
@@ -36,9 +40,9 @@ const cardData = [
   },
 ];
 
-const CardRevealSection = () => {
+const CardRevealSection: React.FC<ServiceSectionProps> = ({ id }) => {
   return (
-    <div id="services" className="py-24 mx-auto bg-[#000000]">
+    <div id={id} className="py-24 mx-auto bg-[#000000]">
       <h1 className="text-3xl md:text-5xl font-agrandirGrandHeavy pb-8 md:pb-12 text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#F0F0F0] to-[#DADADA] text-center">
         Explore My Talents
       </h1>
@@ -73,6 +77,7 @@ const Card = ({
   children,
 }: {
   title: string;
+  description: string;
   icon: React.ReactNode;
   children?: React.ReactNode;
 }) => {

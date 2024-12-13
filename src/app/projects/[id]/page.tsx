@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { useParams, useRouter } from "next/navigation";
+import { notFound, useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ExternalLink, Github, X } from "lucide-react";

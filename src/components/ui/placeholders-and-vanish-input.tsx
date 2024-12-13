@@ -84,12 +84,9 @@ export function PlaceholdersAndVanishInput({
           newData.push({
             x: n,
             y: t,
-            color: [
-              pixelData[e],
-              pixelData[e + 1],
-              pixelData[e + 2],
-              pixelData[e + 3],
-            ],
+            color: `rgba(${pixelData[e]}, ${pixelData[e + 1]}, ${
+              pixelData[e + 2]
+            }, ${pixelData[e + 3]})`,
           });
         }
       }
