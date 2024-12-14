@@ -4,7 +4,7 @@ import { LinkPreview } from "./ui/link-preview";
 
 const LinkPreviewSection = () => {
   return (
-    <div className="flex justify-center z-10 items-center h-[40rem] flex-col px-4">
+    <div className="flex justify-center z-10 items-center h-[40rem] flex-col px-6">
       {/* Introduction Section */}
       <p className="text-neutral-500 dark:text-neutral-400 text-xl md:text-3xl max-w-3xl mx-auto mb-10">
         <LinkPreview url="https://nextjs.org" className="font-bold">

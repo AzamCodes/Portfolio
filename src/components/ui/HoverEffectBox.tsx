@@ -39,7 +39,7 @@ export const HoverEffectBox = ({
 
   return (
     <motion.div
-      className="relative p-6 rounded-[inherit] shadow-md overflow-hidden bg-inherit"
+      className="relative p-3 sm:p-6 rounded-[inherit] shadow-md overflow-hidden bg-inherit"
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

@@ -80,7 +80,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ id }) => {
   };
 
   return (
-    <div className="py-24 px-4" id={id}>
+    <div className="py-24 px-6" id={id}>
       <Toaster position="top-center" />
       <div className="text-center pb-8 md:pb-12">
         <h1 className="text-5xl font-agrandirGrandHeavy z-10 -tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#F0F0F0] to-[#DADADA]">
@@ -89,13 +89,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ id }) => {
       </div>
 
       <div className="flex flex-col md:flex-row max-w-4xl mx-auto gap-8">
-        <div className="w-full relative md:w-1/2 rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+        <div className="w-full relative md:w-1/2 rounded-2xl py-3 p-3 md:p-8 shadow-input bg-white dark:bg-black">
           <Spotlight
             className="absolute left-16 -top-48  md:-bottom-44 md:left-1/2 transform -translate-y-2/3 z-40 h-60 md:h-44 w-full -rotate-90"
             fill="purple"
           />
 
-          <h2 className="font-agrandirTextBold text-xl text-neutral-800 dark:text-neutral-200">
+          <h2 className="font-agrandirTextBold mt-2 text-xl text-neutral-800 dark:text-neutral-200">
             Drop Me a Message
           </h2>
           <form className="my-4 md:my-8" onSubmit={handleSubmit}>
@@ -160,7 +160,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ id }) => {
         </div>
 
         {/* Contact Details Section */}
-        <div className="relative shadow-input-contact w-full md:w-1/2 rounded-lg md:rounded-2xl p-4 md:p-4 overflow-hidden">
+        <div className="relative shadow-input-contact w-full md:w-1/2 rounded-lg md:rounded-2xl p-2 md:p-4 overflow-hidden">
           {/* Top-Left Torchlight */}
           <div className="absolute top-[-50px] left-[-50px] w-72 h-72 bg-[#cd28ee] opacity-30 blur-[150px] rounded-full pointer-events-none z-0" />
 
@@ -173,7 +173,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ id }) => {
           </div>
 
           {/* Main Content with Glass Effect */}
-          <div className="relative z-20 bg-inherit rounded-lg p-2 md:p-6">
+          <div className="relative z-20 bg-inherit rounded-lg py-4 p-2 md:p-6">
             <h2 className="font-agrandirTextBold text-xl text-neutral-800 text-transparent bg-clip-text bg-gradient-to-r from-[#A957F7] to-[#E7D2FF]">
               Contact Me
             </h2>
@@ -276,10 +276,10 @@ const ContactDetailsButton = ({
     >
       <Framer>{icon}</Framer>
       <div>
-        <h3 className="text-lg font-agrandirRegular tracking-wide text-neutral-700 dark:text-neutral-300">
+        <h3 className="text-base sm:text-lg font-agrandirRegular tracking-wide text-neutral-700 dark:text-neutral-300">
           {title}
         </h3>
-        <p className="text-neutral-600 font-agrandirWideLight tracking-wider text-sm dark:text-neutral-400">
+        <p className="text-neutral-600 font-agrandirWideLight tracking-wider text-xs sm:text-sm dark:text-neutral-400">
           {subtitle}
         </p>
       </div>

@@ -49,6 +49,10 @@ export const DirectionAwareHover = ({
     }
   };
 
+  const handleTouchStart = () => {
+    setDirection("top");
+  };
+
   const getDirection = (
     ev: React.MouseEvent<HTMLDivElement, MouseEvent>,
     obj: HTMLElement
@@ -63,6 +67,7 @@ export const DirectionAwareHover = ({
   return (
     <motion.div
       onMouseEnter={handleMouseEnter}
+      onTouchStart={handleTouchStart}
       ref={ref}
       className={cn(
         "relative bg-transparent rounded-lg overflow-hidden group/card",
