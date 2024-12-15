@@ -45,23 +45,99 @@ export const liveProjects = [
 export const projects = [
   {
     id: 1,
-    title: "PrimeAttire Store",
-    shortdesc: "Next.js Ecommerce Store",
-    desc: "An ecommerce platform for stylish clothing, built using Next.js and Tailwind CSS.",
-    img: "/primattire.png",
-    prevlink: "https://primeattire.vercel.app/",
-    githubLink: "https://github.com/azamcodes/primeattire",
-    tags: ["Next Js", "Prisma", "NeonDB", "React"],
+    title: "PrimeAttire",
+    shortdesc:
+      "Modern SaaS E-Commerce Platform with Storefront and Admin Dashboard",
+    desc: `PrimeAttire is a scalable SaaS-based e-commerce platform featuring a dynamic customer-facing storefront and a feature-rich admin dashboard (AdminDesk). Designed for user-friendliness, business scalability, and seamless management, PrimeAttire empowers businesses to create multiple stores and manage products, categories, and promotional billboards. Customers enjoy a hassle-free shopping experience, while store owners benefit from intuitive management tools. Built with modern technologies, PrimeAttire delivers responsive design, real-time synchronization, and efficient state handling for a next-gen e-commerce experience.`,
+
+    coreFeatures: [
+      // Storefront Features
+      "Guest-Friendly Shopping: Customers can browse, add products to their cart, and proceed to checkout without user authentication.",
+      "Advanced Product Filtering: Customers can filter products by size, color, and categories for a personalized shopping experience.",
+      "Cart Integration: Seamlessly view selected items, remove products, and proceed to secure Stripe-powered checkout.",
+      "Responsive Design: Fully optimized for all devices, ensuring a smooth experience on mobile, tablet, and desktop.",
+      "SEO Optimization: Automatically generates metadata to boost search engine visibility.",
+      "Cloudinary Integration: Optimized image delivery for products, categories, and promotional billboards.",
+
+      // Admin Dashboard Features
+      "Product Management: Add, edit, and delete products with details such as pricing, size, color, and stock availability.",
+      "Multi-Category Management: Create multiple categories and link them with billboards and products for dynamic organization.",
+      "Promotional Billboards: Highlight offers and promotions with customizable billboards.",
+      "Real-Time Synchronization: Instant updates between the admin dashboard and storefront via seamless API integration.",
+      "Multi-Tenancy SaaS Capability: Supports multiple store owners, enabling them to manage independent stores efficiently.",
+      "State Management: Powered by Zustand for smooth and scalable state handling.",
+      "Secure Stripe Integration: Simplifies payment processing with Stripe-powered checkout for a fast and secure experience.",
+      "Elegant ShadCN UI: A clean, intuitive admin dashboard interface for managing stores, products, and categories.",
+    ],
+
+    technologiesUsed: [
+      "Next.js 13",
+      "React",
+      "Tailwind CSS",
+      "ShadCN UI",
+      "Zustand",
+      "Prisma ORM",
+      "NeonDB",
+      "Clerk Authentication",
+      "Cloudinary",
+      "Stripe",
+    ],
+
+    img: "/primeattire.png", // Replace with your actual image path
+    prevlink: "https://primeattire.vercel.app/", // Deployment link
+    githubLink: "https://github.com/azamcodes/primeattire", // GitHub repository link
+
+    tags: [
+      "Next.js",
+      "React",
+      "Prisma",
+      "Tailwind CSS",
+      "NeonDB",
+      "Stripe",
+      "ShadCN UI",
+      "Zustand",
+      "Cloudinary",
+      "SaaS",
+    ],
   },
   {
     id: 2,
     title: "WebfolioX",
-    shortdesc: "React Task Management App",
-    desc: "A task management app that helps teams track their progress with Kanban-style boards and deadline management.",
-    img: "/pro1.png",
-    prevlink: "https://tasktrackerpro.vercel.app/",
-    githubLink: "https://github.com/azamcodes/tasktrackerpro",
-    tags: ["Next Js", "Prisma", "NeonDB", "React"],
+    shortdesc:
+      "Interactive Portfolio Website Built with Next.js 13 and Framer Motion",
+    desc: "WebfolioX is a dynamic portfolio website crafted with Next.js 13, showcasing modern design and smooth animations powered by Framer Motion. The platform highlights professional projects, case studies, and testimonials, offering a visually appealing and interactive user experience. WebfolioX emphasizes responsive design, clean layouts, and seamless navigation to present content effectively, making it ideal for creative professionals to display their work and connect with clients.",
+    coreFeatures: [
+      "Dynamic Header: Includes a logo, home, and contact buttons with interactive background effects.",
+      "Social Media Integration: Links to platforms like YouTube for broader connectivity.",
+      "Hero Section: Engaging introductory text and purpose statement.",
+      "Case Study Section: Highlights professional work with clickable details for more information.",
+      "Testimonials: Showcases client reviews with smooth motion effects.",
+      "Services Section: Sleek service descriptions with animations powered by Framer Motion.",
+      "Work Section: Highlights key projects with interactive elements.",
+      "About Section: Provides company details, mission, and team information.",
+      "Footer: Responsive and aesthetically pleasing design with navigation links and social media icons.",
+      "Newsletter Form: Includes a newsletter subscription feature with modern design elements.",
+      "Reusable Components: Ensures consistent design across pages like contact and work.",
+      "Responsive Design: Fully optimized for all devices using Tailwind CSS.",
+      "Animation Integration: Interactive animations throughout for an engaging user experience.",
+    ],
+    technologiesUsed: [
+      "Next.js 13",
+      "React",
+      "Tailwind CSS",
+      "Framer Motion",
+      "SVG Icons",
+    ],
+    img: "/pro1.png", // Replace with your actual image path
+    prevlink: "https://webfoliox.vercel.app/", // Deployment link
+    githubLink: "https://github.com/azamcodes/webfoliox", // GitHub repository link
+    tags: [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Responsive Design",
+    ],
   },
   {
     id: 3,
@@ -88,20 +164,35 @@ export const projects = [
       "MongoDB",
     ],
     img: "/pro2.png",
-    prevlink: "https://devblog.vercel.app/",
-    githubLink: "https://github.com/azamcodes/devblog",
+    prevlink: "https://devbloghub.vercel.app/",
+    githubLink: "https://github.com/azamcodes/devbloghub",
     tags: ["Next Js", "Prisma", "NeonDB", "React"],
   },
 
   {
     id: 4,
     title: "HOT RESTAURANT",
-    shortdesc: "Recipe Sharing Platform",
-    desc: "A platform where food lovers can share recipes, upload cooking videos, and get inspired by various cuisines.",
+    shortdesc: "Fully Responsive Food/Restaurant Website",
+    desc: "This is a beautifully designed and fully responsive restaurant website built using HTML, CSS, and JavaScript. The website features a modern and user-friendly interface, catering to restaurant owners and food enthusiasts. It includes essential sections like Home, About, Menu, Our Customers, and Contact Us, each designed to deliver a seamless experience across all devices.",
     img: "/restaurant.png",
     prevlink: "https://foodiehaven.vercel.app/",
     githubLink: "https://github.com/azamcodes/foodiehaven",
-    tags: ["Next Js", "Prisma", "NeonDB", "React", "MongoDB"],
+    coreFeatures: [
+      "Responsive Design: Optimized for all devices including desktops, tablets, and smartphones.",
+      "Interactive Menu: A visually appealing menu showcasing dishes with images and descriptions.",
+      "Customer Testimonials: A dedicated section to highlight positive reviews from customers.",
+      "Contact Form: Easy-to-use form for inquiries, reservations, or feedback.",
+      "Smooth Navigation: Intuitive layout and smooth scrolling for a great user experience.",
+      "Modern Animations: Eye-catching animations for an engaging and dynamic website.",
+    ],
+    technologiesUsed: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Responsive Design",
+      "Web Animations",
+    ],
+    tags: ["Restaurant", "Website", "Responsive"],
   },
   {
     id: 5,

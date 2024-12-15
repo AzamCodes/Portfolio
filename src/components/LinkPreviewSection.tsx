@@ -22,7 +22,7 @@ const LinkPreviewSection = () => {
       <p className="text-neutral-500 dark:text-neutral-400 text-xl md:text-3xl max-w-3xl mx-auto">
         Visit my portfolio{" "}
         <LinkPreview
-          url="https://yourportfolio.com"
+          url="https://azamdev.vercel.app"
           className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-green-400 to-blue-500"
         >
           to explore my full-stack projects
