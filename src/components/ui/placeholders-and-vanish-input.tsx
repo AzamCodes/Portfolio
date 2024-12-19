@@ -198,8 +198,9 @@ export function PlaceholdersAndVanishInput({
         }}
         onKeyDown={handleKeyDown}
         ref={inputRef}
+        required
         value={value}
-        type="text"
+        type="email"
         className={cn(
           "w-full relative text-sm sm:text-base z-50 border-none dark:text-white bg-transparent text-black h-full rounded-full focus:outline-none focus:ring-0 pl-4 sm:pl-12 pr-11 md:pr-20",
           animating && "text-transparent dark:text-transparent"
