@@ -175,7 +175,7 @@ export const projects = [
     shortdesc: "Fully Responsive Food/Restaurant Website",
     desc: "This is a beautifully designed and fully responsive restaurant website built using HTML, CSS, and JavaScript. The website features a modern and user-friendly interface, catering to restaurant owners and food enthusiasts. It includes essential sections like Home, About, Menu, Our Customers, and Contact Us, each designed to deliver a seamless experience across all devices.",
     img: "/restaurant.png",
-    prevlink: "https://foodiehaven.vercel.app/",
+    prevlink: "https://hot-restaurant.netlify.app/",
     githubLink: "https://github.com/azamcodes/foodiehaven",
     coreFeatures: [
       "Responsive Design: Optimized for all devices including desktops, tablets, and smartphones.",
@@ -192,69 +192,69 @@ export const projects = [
       "Responsive Design",
       "Web Animations",
     ],
-    tags: ["Restaurant", "Website", "Responsive"],
+    tags: ["Restaurant", "HTML", "CSS", "Website", "Responsive"],
   },
 ];
 
-export const gridItems = [
-  {
-    id: 1,
-    title: "I prioritize client collaboration, fostering open communication",
-    description: "",
-    classprovide: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
-    imgClassName: "w-full h-full", // Ensure image covers full area
-    titleClassName: "justify-end", // Align title to the bottom
-    img: "/b1.svg", // Image path
-    spareImg: "", // No spare image
-  },
-  {
-    id: 2,
-    title: "I'm very flexible with time zone communications",
-    description: "",
-    classprovide: "lg:col-span-2 md:col-span-3 md:row-span-2", // Appropriate column and row span
-    imgClassName: "", // Empty class for flexibility
-    titleClassName: "justify-start", // Align title to the start
-    img: "", // No main image
-    spareImg: "", // No spare image
-  },
-  {
-    id: 3,
-    title: "My tech stack",
-    description: "I constantly try to improve", // Added description for better detail
-    classprovide: "lg:col-span-2 md:col-span-3 md:row-span-2",
-    imgClassName: "", // No specific image class
-    titleClassName: "justify-center", // Center the title for this card
-    img: "", // No main image
-    spareImg: "", // No spare image
-  },
-  {
-    id: 4,
-    title: "Tech enthusiast with a passion for development.",
-    description: "",
-    classprovide: "lg:col-span-2 md:col-span-3 md:row-span-1", // Shorter row span
-    imgClassName: "", // No specific image class
-    titleClassName: "justify-start", // Align title to the start
-    img: "/grid.svg", // Image path
-    spareImg: "/b4.svg", // Provide a backup image
-  },
-  {
-    id: 5,
-    title: "Currently building a JS Animation library",
-    description: "The Inside Scoop", // More descriptive text
-    classprovide: "md:col-span-3 md:row-span-2", // Span three columns in md breakpoint
-    imgClassName: "absolute right-0 bottom-0 md:w-96 w-60", // Make image position responsive
-    titleClassName: "justify-center md:justify-start lg:justify-center", // Adjust based on screen size
-    img: "/b5.svg", // Main image path
-    spareImg: "/grid.svg", // Spare image path
-  },
-  {
-    id: 6,
-    title: "Do you want to start a project together?",
-    description: "",
-    classprovide: "lg:col-span-2 md:col-span-3 bg-red-500 md:row-span-1", // Ensure bg-red is properly applied
-    imgClassName: "", // No specific image class
-    titleClassName: "justify-center md:max-w-full max-w-60 text-center", // Center title text
-    img: "", // No main image
-    spareImg: "", // No spare image
-  },
-];
+// export const gridItems = [
+//   {
+//     id: 1,
+//     title: "I prioritize client collaboration, fostering open communication",
+//     description: "",
+//     classprovide: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
+//     imgClassName: "w-full h-full", // Ensure image covers full area
+//     titleClassName: "justify-end", // Align title to the bottom
+//     img: "/b1.svg", // Image path
+//     spareImg: "", // No spare image
+//   },
+//   {
+//     id: 2,
+//     title: "I'm very flexible with time zone communications",
+//     description: "",
+//     classprovide: "lg:col-span-2 md:col-span-3 md:row-span-2", // Appropriate column and row span
+//     imgClassName: "", // Empty class for flexibility
+//     titleClassName: "justify-start", // Align title to the start
+//     img: "", // No main image
+//     spareImg: "", // No spare image
+//   },
+//   {
+//     id: 3,
+//     title: "My tech stack",
+//     description: "I constantly try to improve", // Added description for better detail
+//     classprovide: "lg:col-span-2 md:col-span-3 md:row-span-2",
+//     imgClassName: "", // No specific image class
+//     titleClassName: "justify-center", // Center the title for this card
+//     img: "", // No main image
+//     spareImg: "", // No spare image
+//   },
+//   {
+//     id: 4,
+//     title: "Tech enthusiast with a passion for development.",
+//     description: "",
+//     classprovide: "lg:col-span-2 md:col-span-3 md:row-span-1", // Shorter row span
+//     imgClassName: "", // No specific image class
+//     titleClassName: "justify-start", // Align title to the start
+//     img: "/grid.svg", // Image path
+//     spareImg: "/b4.svg", // Provide a backup image
+//   },
+//   {
+//     id: 5,
+//     title: "Currently building a JS Animation library",
+//     description: "The Inside Scoop", // More descriptive text
+//     classprovide: "md:col-span-3 md:row-span-2", // Span three columns in md breakpoint
+//     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60", // Make image position responsive
+//     titleClassName: "justify-center md:justify-start lg:justify-center", // Adjust based on screen size
+//     img: "/b5.svg", // Main image path
+//     spareImg: "/grid.svg", // Spare image path
+//   },
+//   {
+//     id: 6,
+//     title: "Do you want to start a project together?",
+//     description: "",
+//     classprovide: "lg:col-span-2 md:col-span-3 bg-red-500 md:row-span-1", // Ensure bg-red is properly applied
+//     imgClassName: "", // No specific image class
+//     titleClassName: "justify-center md:max-w-full max-w-60 text-center", // Center title text
+//     img: "", // No main image
+//     spareImg: "", // No spare image
+//   },
+// ];

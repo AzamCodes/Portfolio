@@ -39,7 +39,7 @@ const IndividualProject = () => {
         opacity: isXClicked ? 0 : 1, // Fade out content
       }}
       transition={{
-        duration: 1,
+        duration: 0.8,
         ease: "easeOut",
       }}
     >
@@ -49,9 +49,9 @@ const IndividualProject = () => {
         initial={{ opacity: 1, scale: 1 }} // Start with full opacity and normal scale
         animate={{
           opacity: isXClicked ? 0 : 1, // Fade out when clicked
-          scale: isXClicked ? 0 : 1, // Scale down when clicked
+          scale: isXClicked ? 0.8 : 1, // Scale down when clicked
         }}
-        transition={{ duration: 0.4 }} // Smooth transition
+        transition={{ duration: 0.8 }} // Smooth transition
         onClick={handleXClick}
       >
         <X className="text-sm sm:text-[24px]" />
