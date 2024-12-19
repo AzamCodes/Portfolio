@@ -194,26 +194,6 @@ export const projects = [
     ],
     tags: ["Restaurant", "Website", "Responsive"],
   },
-  {
-    id: 5,
-    title: "FitnessTrackr",
-    shortdesc: "Fitness Tracking App",
-    desc: "A fitness tracking app that monitors workouts, diet, and goals, helping users stay on track with their fitness journey.",
-    img: "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    prevlink: "https://fitnesstrackr.vercel.app/",
-    githubLink: "https://github.com/azamcodes/fitnesstrackr",
-    tags: ["Next Js", "Prisma", "NeonDB", "MySql"],
-  },
-  {
-    id: 6,
-    title: "CryptoLive",
-    shortdesc: "Cryptocurrency Tracker",
-    desc: "A live cryptocurrency tracker that provides real-time updates, price history, and market trends of various coins.",
-    img: "https://images.unsplash.com/photo-1644363832001-0876e81f37a9?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y3J5cHRvfGVufDB8fDB8fHww",
-    prevlink: "https://cryptolive.vercel.app/",
-    githubLink: "https://github.com/azamcodes/cryptolive",
-    tags: ["Next Js", "Prisma", "NeonDB", "Clerk Auth"],
-  },
 ];
 
 export const gridItems = [
