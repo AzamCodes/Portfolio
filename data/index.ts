@@ -171,28 +171,29 @@ export const projects = [
 
   {
     id: 4,
-    title: "HOT RESTAURANT",
-    shortdesc: "Fully Responsive Food/Restaurant Website",
-    desc: "This is a beautifully designed and fully responsive restaurant website built using HTML, CSS, and JavaScript. The website features a modern and user-friendly interface, catering to restaurant owners and food enthusiasts. It includes essential sections like Home, About, Menu, Our Customers, and Contact Us, each designed to deliver a seamless experience across all devices.",
-    img: "/restaurant.png",
-    prevlink: "https://hot-restaurant.netlify.app/",
-    githubLink: "https://github.com/azamcodes/foodiehaven",
+    title: "E-Store",
+    shortdesc: "Fully Functional E-commerce Website with Stripe CMS",
+    desc: "E-Store is a modern e-commerce platform built using the MERN stack (MongoDB, Express.js, React, Node.js) and styled with Tailwind CSS. It provides a seamless shopping experience with features such as product browsing, shopping cart management, secure payments using Stripe CMS, and order tracking. The website is fully responsive and optimized for both mobile and desktop devices.",
+    img: "/e-store.png", // Add the image path for your project
+    prevlink: "https://estore-org.vercel.app/",
+    githubLink: "https://github.com/azamcodes/estore", // Update the GitHub link to your repository
     coreFeatures: [
-      "Responsive Design: Optimized for all devices including desktops, tablets, and smartphones.",
-      "Interactive Menu: A visually appealing menu showcasing dishes with images and descriptions.",
-      "Customer Testimonials: A dedicated section to highlight positive reviews from customers.",
-      "Contact Form: Easy-to-use form for inquiries, reservations, or feedback.",
-      "Smooth Navigation: Intuitive layout and smooth scrolling for a great user experience.",
-      "Modern Animations: Eye-catching animations for an engaging and dynamic website.",
+      "Fully Responsive: Optimized for all devices including desktops, tablets, and smartphones.",
+      "Product Management (via Stripe CMS): Store owner can add, edit, and manage product details such as title, description, price, and stock availability directly through Stripe CMS integration.",
+      "Shopping Cart: Users can add, remove, and view items in their cart.",
+      "Stripe CMS Integration: Secure and seamless payment processing through Stripe CMS for handling transactions.",
+      "Order Tracking: Users can track their orders in real-time post-purchase.",
     ],
     technologiesUsed: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Responsive Design",
-      "Web Animations",
+      "React",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Stripe CMS",
+      "JWT (JSON Web Tokens)",
     ],
-    tags: ["Restaurant", "HTML", "CSS", "Website", "Responsive"],
+    tags: ["E-commerce", "MERN", "React", "Tailwind CSS", "Stripe"],
   },
 ];
 
