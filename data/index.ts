@@ -22,24 +22,24 @@ export const footerLinks = [
 
 export const usefulLinks = [
   { name: "Home", path: "/" },
-  { name: "Projects", path: "/projects" },
-  { name: "Skills", path: "/skills" },
-  { name: "Services", path: "/services" },
-  { name: "Contact", path: "/contact" },
+  { name: "Projects", path: "#projects" },
+  { name: "Skills", path: "#skills" },
+  { name: "Services", path: "#services" },
+  { name: "Contact", path: "#contact" },
 ];
 
 export const socialLinks = [
-  { name: "LinkedIn", path: "https://linkedin.com/in/yourprofile" },
-  { name: "Instagram", path: "https://instagram.com/yourprofile" },
-  { name: "Github", path: "https://github.com/yourprofile" },
-  { name: "Twitter", path: "https://twitter.com/yourprofile" },
+  { name: "LinkedIn", path: "https://linkedin.com/in/azamdev" },
+  { name: "Instagram", path: "https://instagram.com/_azam.shaikh_" },
+  { name: "Github", path: "https://github.com/azamcodes" },
+  { name: "Twitter", path: "https://twitter.com/azamcodes" },
 ];
 
 export const liveProjects = [
-  { name: "Primeattire", path: "https://primeattire.com" },
-  { name: "Devblog", path: "https://devblog.com" },
-  { name: "WebfolioX", path: "https://webfoliox.com" },
-  { name: "Hot Restaurant", path: "https://hotrestaurant.com" },
+  { name: "Primeattire", path: "https://primeattire.vercel.app" },
+  { name: "Devblog", path: "https://devbloghub.vercel.app" },
+  { name: "WebfolioX", path: "https://webfoliox.vercel.app" },
+  { name: "E-STORE", path: "https://estore-org.vercel.app" },
 ];
 
 export const projects = [
