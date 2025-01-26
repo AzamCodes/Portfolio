@@ -77,6 +77,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ id }) => {
 
     // console.log("Template Params:", templateParams);
     triggerEmail(templateParams);
+
+    // Clear input fields after submission
+    setFirstname("");
+    setLastname("");
+    setEmail("");
+    setMessage("");
   };
 
   return (

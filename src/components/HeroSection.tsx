@@ -87,12 +87,22 @@ const HeroSection = () => {
             <div className="flex flex-col md:flex-row items-center gap-4 justify-start md:justify-between w-full">
               <div className="flex gap-3 items-center md:order-1 order-2 flex-wrap">
                 <span className="text-xl">Say Hello</span>
-                <span className="bg-[#111111] cursor-pointer p-3 rounded-full transition-colors duration-300 hover:bg-purple-500">
+                <a
+                  href="https://www.linkedin.com/in/azamdev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#111111] cursor-pointer p-3 rounded-xl transition-colors duration-300 hover:bg-purple-500"
+                >
                   <Linkedin size={25} />
-                </span>
-                <span className="bg-[#111111] cursor-pointer p-3 rounded-full transition-colors duration-300 hover:bg-purple-500">
+                </a>
+                <a
+                  href="https://www.instagram.com/_azam.shaikh_"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#111111] cursor-pointer p-3 rounded-xl transition-colors duration-300 hover:bg-purple-500"
+                >
                   <Instagram size={25} />
-                </span>
+                </a>
               </div>
               <div className="md:order-2 order-1 w-full md:w-auto">
                 <Button
