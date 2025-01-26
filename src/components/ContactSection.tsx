@@ -151,8 +151,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ id }) => {
             <motion.button
               whileTap={{ scale: 0.85 }}
               className="bg-gradient-to-br from-black to-neutral-600 block w-full text-white rounded-lg h-10 font-medium shadow-input"
-              type="button"
-              onClick={handleSubmit}
+              type="submit"
               disabled={isLoading}
             >
               {isLoading ? "Sending..." : "Contact Me"}

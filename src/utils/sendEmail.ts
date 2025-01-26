@@ -18,7 +18,7 @@ export const sendEmail = (
       templateParams,
       process.env.NEXT_PUBLIC_NEXREACT_PUBLIC_ID as string
     )
-    .then((response) => {
+    .then(() => {
       // console.log("Email sent successfully:", response);
       alert("Thank you for your message!");
       clearForm();
