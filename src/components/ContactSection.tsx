@@ -151,10 +151,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ id }) => {
             <motion.button
               whileTap={{ scale: 0.85 }}
               className="bg-gradient-to-br from-black to-neutral-600 block w-full text-white rounded-lg h-10 font-medium shadow-input"
-              type="submit"
+              type="button"
+              onClick={handleSubmit}
               disabled={isLoading}
             >
-              {isLoading ? "Sending..." : "Send"}
+              {isLoading ? "Sending..." : "Contact Me"}
             </motion.button>
           </form>
         </div>
@@ -183,8 +184,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ id }) => {
                   <ContactDetailsButton
                     icon={<Mail size={22} className="text-blue-500" />}
                     title="Email"
-                    subtitle="azamcodes@gmail.com"
-                    link="mailto:azamcodes@gmail.com"
+                    subtitle="contact@azamportfolio.com"
+                    link="mailto:contact@azamportfolio.com"
                   />
                 </HoverEffectBox>
               </div>

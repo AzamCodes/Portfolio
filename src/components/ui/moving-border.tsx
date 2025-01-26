@@ -33,7 +33,7 @@ export function Button<T extends ElementType = "button">({
   return (
     <Component
       className={cn(
-        "bg-transparent relative text-xl rounded-2xl h-12 w-fit sm:h-14 sm:w-40 p-[3px] overflow-hidden border border-purple-400",
+        "bg-transparent relative text-xl rounded-2xl h-12 w-44 sm:h-14 sm:w-40 p-[3px] overflow-hidden border border-purple-400",
         containerClassName
       )}
       style={{
@@ -57,11 +57,13 @@ export function Button<T extends ElementType = "button">({
 
       <div
         className={cn(
-          "relative bg-slate-900/[0.8] border border-slate-800 backdrop-blur-xl text-white flex items-center justify-center w-full h-full text-sm antialiased",
+          "relative  border border-inherit backdrop-blur-xl text-white flex items-center justify-center w-full h-full text-xl antialiased",
           className
         )}
         style={{
           borderRadius: `calc(${borderRadius} * 0.96)`,
+          backgroundColor: "#21D4FD",
+          backgroundImage: "linear-gradient(315deg, #21D4FD 0%, #B721FF 100%)",
         }}
       >
         {children}

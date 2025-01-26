@@ -6,6 +6,8 @@ import { Spotlight } from "./ui/Spotlight";
 import { HeroHighlight } from "./ui/hero-highlight";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
 import DateDisplay from "./DateDisplay";
+import { Button } from "./ui/moving-border";
+import { Linkedin, Instagram } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -51,7 +53,7 @@ const HeroSection = () => {
             {/* Image with Professional Styling */}
             <div className="relative rounded-full border-4 border-gray-200 dark:border-purple-600 shadow-lg overflow-hidden flex items-center justify-center w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56">
               <Image
-                src="/hero.png"
+                src="/admin.jpg"
                 width={250}
                 height={250}
                 alt="author image"
@@ -72,9 +74,8 @@ const HeroSection = () => {
               words="Building Modern, Efficient, and Scalable Digital Experiences"
               className="text-center text-2xl md:text-4xl font-agrandirGrandHeavy lg:text-5xl"
             />
-
             {/* Short, impactful paragraph below the heading */}
-            <p className="md:tracking-wider font-agrandirRegular mb-4 text-lg md:text-lg lg:text-xl text-neutral-700 dark:text-white">
+            <p className="md:tracking-wider font-agrandirRegular mb-4 text-lg md:text-lg lg:text-lg text-neutral-700 dark:text-white">
               Hi, I&apos;m{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A957F7] to-[#E7D2FF] font-agrandirTextBold">
                 Azam
@@ -83,6 +84,26 @@ const HeroSection = () => {
               high-performance, responsive web applications with the latest
               technologies.
             </p>
+            <div className="flex flex-col md:flex-row items-center gap-4 justify-start md:justify-between w-full">
+              <div className="flex gap-3 items-center md:order-1 order-2 flex-wrap">
+                <span className="text-xl">Say Hello</span>
+                <span className="bg-[#111111] cursor-pointer p-3 rounded-full transition-colors duration-300 hover:bg-purple-500">
+                  <Linkedin size={25} />
+                </span>
+                <span className="bg-[#111111] cursor-pointer p-3 rounded-full transition-colors duration-300 hover:bg-purple-500">
+                  <Instagram size={25} />
+                </span>
+              </div>
+              <div className="md:order-2 order-1 w-full md:w-auto">
+                <Button
+                  onClick={() =>
+                    (window.location.href = "mailto:contact@azamportfolio.com")
+                  }
+                >
+                  Contact Me
+                </Button>
+              </div>
+            </div>
           </div>
         </motion.div>
       </HeroHighlight>
