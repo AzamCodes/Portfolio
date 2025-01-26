@@ -61,21 +61,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ id }) => {
       return;
     }
     setIsLoading(true);
-    console.log("Input Values:");
-    console.log("Firstname:", firstname);
-    console.log("Lastname:", lastname);
-    console.log("Email:", email);
-    console.log("Message:", message);
+    // console.log("Input Values:");
+    // console.log("Firstname:", firstname);
+    // console.log("Lastname:", lastname);
+    // console.log("Email:", email);
+    // console.log("Message:", message);
 
     const templateParams = {
       user_firstname: firstname,
       user_lastname: lastname,
-      to_name: "Azam",
+      to_name: "Azam Shaikh",
       user_message: message,
       user_email: email,
     };
 
-    console.log("Template Params:", templateParams);
+    // console.log("Template Params:", templateParams);
     triggerEmail(templateParams);
   };
 

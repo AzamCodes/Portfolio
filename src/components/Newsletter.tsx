@@ -13,7 +13,7 @@ export function NewsletterDemo() {
   ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("Input value:", e.target.value);
+    // console.log("Input value:", e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
