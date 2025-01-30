@@ -143,6 +143,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        <link rel="canonical" href="https://www.azamportfolio.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
