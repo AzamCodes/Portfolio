@@ -36,7 +36,7 @@ export const socialLinks = [
 ];
 
 export const liveProjects = [
-  { name: "Primeattire", path: "https://primeattire.vercel.app" },
+  { name: "PrimeAttire", path: "https://primeattire.vercel.app" },
   { name: "Devblog", path: "https://devbloghub.vercel.app" },
   { name: "WebfolioX", path: "https://webfoliox.vercel.app" },
   { name: "E-STORE", path: "https://estore-org.vercel.app" },
@@ -45,9 +45,9 @@ export const liveProjects = [
 export const projects = [
   {
     id: 1,
-    title: "PrimeAttire",
+    title: "PrimeAttire - Modern SaaS E-Commerce Platform",
     shortdesc:
-      "Modern SaaS E-Commerce Platform with Storefront and Admin Dashboard",
+      "A scalable e-commerce platform with a dynamic storefront and admin dashboard.",
     desc: `PrimeAttire is a scalable SaaS-based e-commerce platform featuring a dynamic customer-facing storefront and a feature-rich admin dashboard (AdminDesk). Designed for user-friendliness, business scalability, and seamless management, PrimeAttire empowers businesses to create multiple stores and manage products, categories, and promotional billboards. Customers enjoy a hassle-free shopping experience, while store owners benefit from intuitive management tools. Built with modern technologies, PrimeAttire delivers responsive design, real-time synchronization, and efficient state handling for a next-gen e-commerce experience.`,
 
     coreFeatures: [
@@ -102,10 +102,10 @@ export const projects = [
   },
   {
     id: 2,
-    title: "WebfolioX",
+    title: "WebfolioX - Interactive Portfolio Website",
     shortdesc:
-      "Interactive Portfolio Website Built with Next.js 13 and Framer Motion",
-    desc: "WebfolioX is a dynamic portfolio website crafted with Next.js 13, showcasing modern design and smooth animations powered by Framer Motion. The platform highlights professional projects, case studies, and testimonials, offering a visually appealing and interactive user experience. WebfolioX emphasizes responsive design, clean layouts, and seamless navigation to present content effectively, making it ideal for creative professionals to display their work and connect with clients.",
+      "Showcase your work with a modern, animated portfolio built with Next.js.",
+    desc: `WebfolioX is an interactive portfolio website crafted with Next.js 13 and Framer Motion. It features a modern design, smooth animations, and showcases professional projects, case studies, and testimonials. The platform emphasizes responsive design, clean layouts, and seamless navigation, making it ideal for creative professionals to display their work and connect with clients.`,
     coreFeatures: [
       "Dynamic Header: Includes a logo, home, and contact buttons with interactive background effects.",
       "Social Media Integration: Links to platforms like YouTube for broader connectivity.",
@@ -141,9 +141,10 @@ export const projects = [
   },
   {
     id: 3,
-    title: "DevBlog",
-    shortdesc: "Next.js Blogging Platform",
-    desc: `DevBlog is a modern and feature-rich blogging platform built with Next.js, Tailwind CSS, and ShadCN UI. It allows users to create, manage, and share their blogs with ease. Designed with a focus on performance and user experience, DevBlog offers an intuitive interface, responsive design, and various advanced features for both users and admins.`,
+    title: "DevBlog - Next.js Blogging Platform",
+    shortdesc:
+      "A feature-rich blogging platform for creating and managing blogs.",
+    desc: `DevBlog is a modern blogging platform built with Next.js, Tailwind CSS, and ShadCN UI. It allows users to create, manage, and share their blogs with ease. With a focus on performance and user experience, DevBlog offers an intuitive interface, responsive design, and various advanced features for both users and admins, including user authentication and SEO optimization.`,
     coreFeatures: [
       "User Authentication: Secure sign-up, log-in, JWT-based authentication, email verification, and password recovery.",
       "Blog Creation and Management: Create and publish blogs, upload images, manage posts.",
@@ -171,9 +172,10 @@ export const projects = [
 
   {
     id: 4,
-    title: "E-Store",
-    shortdesc: "Fully Functional E-commerce Website with Stripe CMS",
-    desc: "E-Store is a modern e-commerce platform built using the MERN stack (MongoDB, Express.js, React, Node.js) and styled with Tailwind CSS. It provides a seamless shopping experience with features such as product browsing, shopping cart management, secure payments using Stripe CMS, and order tracking. The website is fully responsive and optimized for both mobile and desktop devices.",
+    title: "E-Store - Fully Functional E-commerce Website",
+    shortdesc:
+      "A modern e-commerce platform built with the MERN stack and Stripe CMS.",
+    desc: `E-Store is a fully functional e-commerce website built using the MERN stack (MongoDB, Express.js, React, Node.js) and styled with Tailwind CSS. It provides a seamless shopping experience with features such as product browsing, shopping cart management, secure payments using Stripe CMS, and order tracking. The website is fully responsive and optimized for both mobile and desktop devices, ensuring a smooth user experience.`,
     img: "/e-store.png", // Add the image path for your project
     prevlink: "https://estore-org.vercel.app/",
     githubLink: "https://github.com/azamcodes/estore", // Update the GitHub link to your repository

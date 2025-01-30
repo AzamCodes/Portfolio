@@ -96,8 +96,36 @@ const agrandirWideLight = localfont({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Created By Azam",
+  title: "Portfolio - Azam Shaikh",
+  description:
+    "Created By Azam - A portfolio showcasing my work and skills in web development.",
+  keywords: [
+    "portfolio, web development, Azam Shaikh, projects, skills, full-stack developer",
+  ],
+  openGraph: {
+    title: "Portfolio - Azam Shaikh",
+    description:
+      "Created By Azam - A portfolio showcasing my work and skills in web development.",
+    url: "https://azamportfolio.com",
+    siteName: "Azam Portfolio",
+    images: [
+      {
+        url: "https://azamportfolio.com/public/azamporfolio.png",
+        width: 800,
+        height: 600,
+        alt: "Homepage of Azam Shaikh's Portfolio",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Portfolio - Azam Shaikh",
+    description:
+      "Created By Azam - A portfolio showcasing my work and skills in web development.",
+    image: "https://azamportfolio.com/azamportfolio.png",
+  },
 };
 
 export default function RootLayout({
@@ -107,6 +135,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Azam Shaikh",
+              url: "https://azamportfolio.com",
+              sameAs: [
+                "https://www.linkedin.com/in/azamdev",
+                "https://github.com/azamcodes",
+                "https://www.instagram.com/_azam.shaikh_/",
+              ],
+              jobTitle: "Web Developer",
+              worksFor: {
+                "@type": "Organization",
+                name: "Celunox",
+              },
+            }),
+          }}
+        />
+      </head>
       <body
         className={`${agrandirGrandHeavy.variable} ${agrandirGrandLight.variable} ${agrandirNarrow.variable} ${agrandirRegular.variable} ${agrandirTextBold.variable} ${agrandirThinItalic.variable} ${agrandirTight.variable} ${agrandirWideBlackItalic.variable} ${agrandirWideLight.variable} antialiased`}
       >
