@@ -124,7 +124,11 @@ export const metadata: Metadata = {
     title: "Portfolio - Azam Shaikh",
     description:
       "Created By Azam - A portfolio showcasing my work and skills in web development.",
-    image: "https://azamportfolio.com/azamportfolio.png",
+    images: [
+      {
+        url: "https://azamportfolio.com/azamportfolio.png",
+      },
+    ],
   },
 };
 

@@ -5,10 +5,9 @@ import { notFound, useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ExternalLink, Github, X } from "lucide-react";
-import { projects } from "../../../../data"; // Ensure this imports updated project data
+import { projects } from "../../../../data"; // Adjust the import path as necessary
 import ShimmerSlider from "@/components/ButtonSlider";
 import { Btn } from "@/components/Button";
-import { Metadata } from "next";
 import { Helmet } from "react-helmet";
 
 const IndividualProject = () => {
@@ -171,38 +170,3 @@ const IndividualProject = () => {
 };
 
 export default IndividualProject;
-
-export async function generateMetadata({ params }) {
-  const project = projects.find((proj) => proj.id === Number(params.id));
-
-  if (!project) {
-    return {
-      title: "Project Not Found",
-      description: "The project you are looking for does not exist.",
-    };
-  }
-
-  return {
-    title: project.title,
-    description: project.shortdesc, // Use a short description for the meta description
-    openGraph: {
-      title: project.title,
-      description: project.shortdesc,
-      url: `https://azamportfolio.com/projects/${project.id}`, // Update with your base URL
-      images: [
-        {
-          url: project.img, // Ensure you have a valid image URL
-          width: 800,
-          height: 600,
-          alt: project.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: project.title,
-      description: project.shortdesc,
-      image: project.img,
-    },
-  };
-}
