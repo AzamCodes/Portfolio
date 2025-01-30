@@ -144,6 +144,31 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <head>
         <link rel="canonical" href="https://www.azamportfolio.com" />
+        <link
+          rel="icon"
+          href="/favicon-16x16.png"
+          type="image/png"
+          sizes="16x16"
+        />
+        <link
+          rel="icon"
+          href="/favicon-32x32.png"
+          type="image/png"
+          sizes="32x32"
+        />
+        <link
+          rel="icon"
+          href="/favicon-192x192.png"
+          type="image/png"
+          sizes="192x192"
+        />
+        <link
+          rel="icon"
+          href="/favicon.ico"
+          type="image/x-icon"
+          sizes="512x512"
+        />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
