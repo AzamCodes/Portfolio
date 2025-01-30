@@ -102,6 +102,9 @@ export const metadata: Metadata = {
   keywords: [
     "portfolio, web development, Azam Shaikh, projects, skills, full-stack developer",
   ],
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     title: "Portfolio - Azam Shaikh",
     description:
