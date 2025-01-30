@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Params }) {
     openGraph: {
       title: project.title,
       description: project.shortdesc,
-      url: `https://azamportfolio.com/projects/${project.id}`,
+      url: `https://www.azamportfolio.com/projects/${project.id}`,
       images: [
         {
           url: project.img,

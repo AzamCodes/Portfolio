@@ -41,7 +41,7 @@ const IndividualProject = () => {
             name: project.title,
             description: project.shortdesc,
             image: project.img,
-            url: `https://azamportfolio.com/projects/${project.id}`,
+            url: `https://www.azamportfolio.com/projects/${project.id}`,
           })}
         </script>
         <title>{project.title}</title>
@@ -51,7 +51,7 @@ const IndividualProject = () => {
         <meta property="og:image" content={project.img} />
         <meta
           property="og:url"
-          content={`https://azamportfolio.com/projects/${project.id}`}
+          content={`https://www.azamportfolio.com/projects/${project.id}`}
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={project.title} />

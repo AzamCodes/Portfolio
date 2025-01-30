@@ -109,11 +109,11 @@ export const metadata: Metadata = {
     title: "Portfolio - Azam Shaikh",
     description:
       "Created By Azam - A portfolio showcasing my work and skills in web development.",
-    url: "https://azamportfolio.com",
+    url: "https://www.azamportfolio.com",
     siteName: "Azam Portfolio",
     images: [
       {
-        url: "https://azamportfolio.com/public/azamporfolio.png",
+        url: "https://www.azamportfolio.com/public/azamporfolio.png",
         width: 800,
         height: 600,
         alt: "Homepage of Azam Shaikh's Portfolio",
@@ -129,7 +129,7 @@ export const metadata: Metadata = {
       "Created By Azam - A portfolio showcasing my work and skills in web development.",
     images: [
       {
-        url: "https://azamportfolio.com/azamportfolio.png",
+        url: "https://www.azamportfolio.com/azamportfolio.png",
       },
     ],
   },
@@ -150,7 +150,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Azam Shaikh",
-              url: "https://azamportfolio.com",
+              url: "https://www.azamportfolio.com",
               sameAs: [
                 "https://www.linkedin.com/in/azamdev",
                 "https://github.com/azamcodes",
