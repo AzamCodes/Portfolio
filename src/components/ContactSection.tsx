@@ -210,7 +210,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ id }) => {
                     icon={<FileText size={22} className="text-purple-500" />}
                     title="Resume"
                     subtitle="View Resume"
-                    link="/resume.pdf"
+                    link="https://drive.google.com/file/d/1cM6w3RQVkssbY9Pk85PWy-BUxhGLUb_u/view?usp=sharing"
                   />
                 </HoverEffectBox>
               </div>
