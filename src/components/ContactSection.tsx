@@ -14,6 +14,7 @@ import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import emailjs from "emailjs-com";
 import { Spotlight } from "./ui/Spotlight";
+import PdfViewer from "./PdfViewer";
 interface ContactSectionProps {
   id: string;
 }
@@ -22,6 +23,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ id }) => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
+  const [showPdfViewer, setShowPdfViewer] = useState(false);
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -86,7 +88,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ id }) => {
   };
 
   return (
-    <div className="py-24 px-6" id={id}>
+    <div className="py-24 bg-black/95 text-white px-6" id={id}>
       <Toaster position="top-center" />
       <div className="text-center pb-8 md:pb-12">
         <h1 className="text-5xl font-agrandirGrandHeavy z-10 -tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#F0F0F0] to-[#DADADA]">
@@ -208,10 +210,24 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ id }) => {
                 <HoverEffectBox color="purple">
                   <ContactDetailsButton
                     icon={<FileText size={22} className="text-purple-500" />}
-                    title="Resume"
-                    subtitle="View Resume"
-                    link="/resume.pdf"
+                    title="WhatsApp"
+                    subtitle="+91 859 127 2660"
+                    link="https://wa.me/1234567890"
                   />
+                  {/* <button
+                    onClick={() => setShowPdfViewer(!showPdfViewer)} // Toggle the PDF viewer
+                    className="flex items-center gap-2 w-full text-left bg-transparent cursor-pointer"
+                  >
+                    <FileText size={22} className="text-purple-500" />
+                    <div>
+                      <h3 className="text-base sm:text-lg font-agrandirRegular tracking-wide text-neutral-700 dark:text-neutral-300">
+                        Resume
+                      </h3>
+                      <p className="text-neutral-600 font-agrandirWideLight tracking-wider text-xs sm:text-sm dark:text-neutral-400">
+                        View Resume
+                      </p>
+                    </div>
+                  </button> */}
                 </HoverEffectBox>
               </div>
               {/* Social Media Links */}
@@ -277,7 +293,10 @@ const ContactDetailsButton = ({
 }) => (
   <div className="group bg-transparent">
     <button
-      onClick={() => window.open(link, "_blank")}
+      onClick={() => {
+        console.log("Opening link:", link); // Debugging log
+        window.open(link, "_blank");
+      }}
       className="flex items-center gap-2 w-full text-left bg-transparent cursor-pointer"
     >
       <Framer>{icon}</Framer>

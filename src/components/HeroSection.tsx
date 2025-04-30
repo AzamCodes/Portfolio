@@ -57,7 +57,7 @@ const HeroSection = () => {
                 width={250}
                 height={250}
                 alt="author image"
-                className="object-cover"
+                className="object-cover w-full h-full transition-transform duration-500 ease-in-out transform scale-125 hover:scale-110 rounded-full"
               />
             </div>
           </div>
@@ -86,14 +86,14 @@ const HeroSection = () => {
             </p>
             <div className="flex flex-col md:flex-row items-center gap-4 justify-start md:justify-between w-full">
               <div className="flex gap-3 items-center md:order-1 order-2 flex-wrap">
-                <span className="text-xl">Say Hello</span>
+                <span className="text-xl text-white">Say Hello</span>
                 <a
                   href="https://www.linkedin.com/in/azamdev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[#111111] cursor-pointer p-3 rounded-xl transition-colors duration-300 hover:bg-purple-500"
                 >
-                  <Linkedin size={25} />
+                  <Linkedin className="text-white" size={25} />
                 </a>
                 <a
                   href="https://www.instagram.com/_azam.shaikh_"
@@ -101,7 +101,7 @@ const HeroSection = () => {
                   rel="noopener noreferrer"
                   className="bg-[#111111] cursor-pointer p-3 rounded-xl transition-colors duration-300 hover:bg-purple-500"
                 >
-                  <Instagram size={25} />
+                  <Instagram className="text-white" size={25} />
                 </a>
               </div>
               <div className="md:order-2 order-1 w-full md:w-auto">

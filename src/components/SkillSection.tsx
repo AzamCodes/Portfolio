@@ -33,7 +33,7 @@ const SkillSection: React.FC<SkillSectionProps> = ({ id }) => {
       <h1 className="text-4xl md:text-5xl font-agrandirGrandHeavy tracking-wider pb-4 md:pb-8 text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#F0F0F0] to-[#DADADA] text-center">
         Skills
       </h1>
-      <div className="max-w-5xl mx-auto px-4 md:px-8">
+      <div className="max-w-5xl mx-auto text-white px-4 md:px-8">
         <HoverEffect items={skills} className="your-class-name" />
       </div>
     </div>
