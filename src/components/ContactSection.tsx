@@ -14,7 +14,6 @@ import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import emailjs from "emailjs-com";
 import { Spotlight } from "./ui/Spotlight";
-import PdfViewer from "./PdfViewer";
 interface ContactSectionProps {
   id: string;
 }
@@ -23,7 +22,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ id }) => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
-  const [showPdfViewer, setShowPdfViewer] = useState(false);
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
