@@ -236,6 +236,41 @@
 
 // utils/sendEmail.ts
 /// utils/sendEmail.ts
+// import emailjs from "@emailjs/browser";
+// import { toast } from "react-hot-toast";
+
+// // init EmailJS
+// emailjs.init(process.env.NEXT_PUBLIC_NEXREACT_PUBLIC_ID!);
+
+// export async function sendEmail(
+//   firstname: string,
+//   lastname:  string,
+//   email:     string,
+//   message:   string,
+//   clearForm: () => void
+// ) {
+//   try {
+//     await emailjs.send(
+//       process.env.NEXT_PUBLIC_NEXREACT_SERVICE_ID!,
+//       process.env.NEXT_PUBLIC_NEXREACT_AUTO_REPLY_TEMPLATE_ID!, // now “Combined Confirmation & Alert”
+//       {
+//         user_firstname: firstname,
+//         user_lastname:  lastname,
+//         email,                             // drives “To: {{email}}”
+//         user_message:   message,           // included in body
+//         admin_email:    process.env.NEXT_PUBLIC_ADMIN_EMAIL! // drives BCC
+//       }
+//     );
+
+//     toast.success("Message sent! You’ll both get notified.");
+//     clearForm();
+//   } catch (err: any) {
+//     console.error("EmailJS error:", err.status, err.text || err);
+//     toast.error("Something went wrong.");
+//   }
+// }
+
+
 import emailjs from "@emailjs/browser";
 import { toast } from "react-hot-toast";
 
@@ -244,9 +279,9 @@ emailjs.init(process.env.NEXT_PUBLIC_NEXREACT_PUBLIC_ID!);
 
 export async function sendEmail(
   firstname: string,
-  lastname:  string,
-  email:     string,
-  message:   string,
+  lastname: string,
+  email: string,
+  message: string,
   clearForm: () => void
 ) {
   try {
@@ -255,17 +290,26 @@ export async function sendEmail(
       process.env.NEXT_PUBLIC_NEXREACT_AUTO_REPLY_TEMPLATE_ID!, // now “Combined Confirmation & Alert”
       {
         user_firstname: firstname,
-        user_lastname:  lastname,
-        email,                             // drives “To: {{email}}”
-        user_message:   message,           // included in body
-        admin_email:    process.env.NEXT_PUBLIC_ADMIN_EMAIL! // drives BCC
+        user_lastname: lastname,
+        email, // drives “To: {{email}}”
+        user_message: message, // included in body
+        admin_email: process.env.NEXT_PUBLIC_ADMIN_EMAIL!, // drives BCC
       }
     );
 
     toast.success("Message sent! You’ll both get notified.");
     clearForm();
-  } catch (err: any) {
-    console.error("EmailJS error:", err.status, err.text || err);
+  } catch (error: unknown) {
+    if (
+      typeof error === "object" &&
+      error !== null &&
+      "status" in error &&
+      "text" in error
+    ) {
+      console.error("EmailJS error:", error.status, error.text);
+    } else {
+      console.error("EmailJS error:", error);
+    }
     toast.error("Something went wrong.");
   }
 }

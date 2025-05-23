@@ -11,8 +11,8 @@ import { Textarea } from "./ui/Textarea";
 import { HoverEffectBox } from "./ui/HoverEffectBox";
 import { cn } from "@/utils/cn";
 import React, { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
-import emailjs from "@emailjs/browser";
+import { Toaster } from "react-hot-toast";
+// import emailjs from "@emailjs/browser";
 import { Spotlight } from "./ui/Spotlight";
 import { sendEmail } from "@/utils/sendEmail";
 interface ContactSectionProps {

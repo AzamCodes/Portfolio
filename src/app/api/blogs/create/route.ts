@@ -63,68 +63,55 @@ interface IBlogData {
   title: string;
   slug: string;
   category: string;
-  tags: string[]; // Expect an array of strings
+  tags: string[];
   imageUrl: string;
   content: string;
-  isFeatured:Boolean;
+  isFeatured: boolean; // fixed
 }
 
 export async function POST(request: Request) {
   try {
-    // Connect to MongoDB
     await connectDB();
-
-    // Parse the incoming blog data from the request body
     const blogData: IBlogData = await request.json();
     console.log("Received blogData:", blogData);
 
-    // If an image is provided as a base64-encoded string, upload it to Cloudinary.
-    // Otherwise, assume blogData.imageUrl is already a valid URL.
-    // if (blogData.imageUrl && blogData.imageUrl.startsWith("data:")) {
-    //   const uploadResult = await cloudinary.uploader.upload(blogData.imageUrl, {
-    //     folder: "myportfolio/blogs", // Adjust folder as needed
-    //   });
-    //   // Replace the base64 string with the secure URL from Cloudinary
-    //   blogData.imageUrl = uploadResult.secure_url;
-    // }
-
     if (blogData.imageUrl && blogData.imageUrl.startsWith("data:")) {
-      // Upload base64 image
       const uploadResult = await cloudinary.uploader.upload(blogData.imageUrl, {
         folder: "myportfolio/blogs",
       });
       blogData.imageUrl = uploadResult.secure_url;
-    } else if (
-      blogData.imageUrl &&
-      !blogData.imageUrl.startsWith("http")
-    ) {
-      // You can throw an error or log it — this might be a mistake
+    } else if (blogData.imageUrl && !blogData.imageUrl.startsWith("http")) {
       throw new Error("Invalid image URL format");
     }
-    
 
-    // Create a new blog document using the Blog model
     const newBlog = new Blog({
       title: blogData.title,
       slug: blogData.slug,
       category: blogData.category,
       tags: blogData.tags,
       imageUrl: blogData.imageUrl,
-      isFeatured:blogData.isFeatured,
+      isFeatured: blogData.isFeatured,
       content: blogData.content,
     });
 
-    // Save the new blog to the database
     await newBlog.save();
 
     return NextResponse.json(
       { message: "Blog created successfully", blog: newBlog },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error creating blog:", error);
+
+    if (error instanceof Error) {
+      return NextResponse.json(
+        { message: "Error creating blog", error: error.message },
+        { status: 500 }
+      );
+    }
+
     return NextResponse.json(
-      { message: "Error creating blog", error: error.message },
+      { message: "Error creating blog", error: "Unknown error" },
       { status: 500 }
     );
   }

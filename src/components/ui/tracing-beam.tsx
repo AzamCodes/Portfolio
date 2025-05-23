@@ -4,7 +4,7 @@ import {
   motion,
   useTransform,
   useScroll,
-  useVelocity,
+  // useVelocity,
   useSpring,
 } from "framer-motion";
 import { cn } from "@/utils/cn";

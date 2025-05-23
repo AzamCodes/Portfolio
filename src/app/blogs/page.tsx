@@ -135,13 +135,103 @@
 //     </>
 //   )
 // }
+// import BlogHead from './_components/BlogHead'
+// import FeaturedSection from './_components/FeaturedSection'
+// import BlogList from './_components/BlogList'
+// import SearchBar from './_components/SearchBar'
+// import { connectDB } from '../../../lib/db'
+// import { Blog } from '../../../models/BlogModel'
+
+
+// export const dynamic = 'force-dynamic'
+
+// interface PageProps {
+//   searchParams: { q?: string }
+// }
+
+// interface Blog {
+//   _id: string
+//   title: string
+//   description: string
+//   content: string
+//   category: string
+//   slug: string
+//   imageUrl: string
+//   isFeatured: boolean
+//   createdAt: string
+//   // author: string
+//   // authorImg?: string
+// }
+
+// export default async function BlogsPage({ searchParams }: PageProps) {
+//   const q = (searchParams.q || '').trim()
+
+//   await connectDB()
+
+//   const filter: Record<string, any> = {}
+//   if (q) {
+//     filter.$or = [
+//       { title: { $regex: q, $options: 'i' } },
+//       { description: { $regex: q, $options: 'i' } },
+//     ]
+//   }
+
+//   const blogsFromDb = await Blog.find(filter).sort({ createdAt: -1 }).lean()
+
+//     // Map to exactly your Blog interface
+//     const blogs: Blog[] = (blogsFromDb as any[]).map(b => ({
+//       _id:         b._id.toString(),
+//       title:       b.title,
+//       description: b.description,
+//       content:     b.content,
+//       category:    b.category,
+//       slug:        b.slug,
+//       imageUrl:    b.imageUrl,
+//       isFeatured:  b.isFeatured,
+//       createdAt:   (b.createdAt as Date).toISOString(),
+//       // author:      b.author,
+//       // authorImg:   b.authorImg,
+//     }));
+  
+
+//   const featured = blogs.filter(b => b.isFeatured)
+
+//   return (
+//     <>
+//       <BlogHead />
+//       <form
+//         method="get"
+//         action="/blogs"
+//         role="search"
+//         className="flex items-center px-4 w-full md:max-w-lg mx-auto my-6"
+//       >
+//         <SearchBar initialQuery={q} />
+//         <button
+//           type="submit"
+//           className="px-3 md:px-6 py-2 fancy-btn  rounded-r-md  transition"
+//         >
+//           <span>
+//           Search
+//           </span>
+//         </button>
+//       </form>
+//       <FeaturedSection blog={featured} />
+//       <BlogList blog={blogs} />
+//     </>
+//   )
+// }
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import BlogHead from './_components/BlogHead'
 import FeaturedSection from './_components/FeaturedSection'
 import BlogList from './_components/BlogList'
 import SearchBar from './_components/SearchBar'
 import { connectDB } from '../../../lib/db'
 import { Blog } from '../../../models/BlogModel'
+// import mongoose from 'mongoose'
 
+// Fallback LeanDocument type if your mongoose version doesn't export it
+// type LeanDocument<T> = Omit<T, keyof mongoose.Document>
 
 export const dynamic = 'force-dynamic'
 
@@ -149,18 +239,15 @@ interface PageProps {
   searchParams: { q?: string }
 }
 
-interface Blog {
+interface BlogItem {
   _id: string
   title: string
-  description: string
   content: string
   category: string
   slug: string
   imageUrl: string
   isFeatured: boolean
   createdAt: string
-  // author: string
-  // authorImg?: string
 }
 
 export default async function BlogsPage({ searchParams }: PageProps) {
@@ -168,31 +255,27 @@ export default async function BlogsPage({ searchParams }: PageProps) {
 
   await connectDB()
 
-  const filter: Record<string, any> = {}
+  const filter: Record<string, unknown> = {}
   if (q) {
     filter.$or = [
       { title: { $regex: q, $options: 'i' } },
-      { description: { $regex: q, $options: 'i' } },
+      { content: { $regex: q, $options: 'i' } },
     ]
   }
 
-  const blogsFromDb = await Blog.find(filter).sort({ createdAt: -1 }).lean()
+  // Use fallback LeanDocument type here
+const blogsFromDb = await Blog.find(filter).sort({ createdAt: -1 }).lean()
 
-    // Map to exactly your Blog interface
-    const blogs: Blog[] = (blogsFromDb as any[]).map(b => ({
-      _id:         b._id.toString(),
-      title:       b.title,
-      description: b.description,
-      content:     b.content,
-      category:    b.category,
-      slug:        b.slug,
-      imageUrl:    b.imageUrl,
-      isFeatured:  b.isFeatured,
-      createdAt:   (b.createdAt as Date).toISOString(),
-      // author:      b.author,
-      // authorImg:   b.authorImg,
-    }));
-  
+const blogs: BlogItem[] = blogsFromDb.map(b => ({
+  _id: (b as any)._id.toString(),
+  title: (b as any).title || '',
+  content: (b as any).content || '',
+  category: (b as any).category || '',
+  slug: (b as any).slug || '',
+  imageUrl: (b as any).imageUrl ?? '',
+  isFeatured: (b as any).isFeatured ?? false,
+  createdAt: ((b as any).createdAt as Date).toISOString(),
+}))
 
   const featured = blogs.filter(b => b.isFeatured)
 
@@ -208,11 +291,9 @@ export default async function BlogsPage({ searchParams }: PageProps) {
         <SearchBar initialQuery={q} />
         <button
           type="submit"
-          className="px-3 md:px-6 py-2 fancy-btn  rounded-r-md  transition"
+          className="px-3 md:px-6 py-2 fancy-btn rounded-r-md transition"
         >
-          <span>
-          Search
-          </span>
+          <span>Search</span>
         </button>
       </form>
       <FeaturedSection blog={featured} />

@@ -21,11 +21,19 @@ export async function GET(
       );
     }
     return NextResponse.json(blog);
-  } catch (error: any) {
-    console.error("Error fetching blog:", error);
+ } catch (error: unknown) {
+  console.error("Error fetching blog:", error);
+
+  if (error instanceof Error) {
     return NextResponse.json(
       { message: "Failed to fetch blog", error: error.message },
       { status: 500 }
     );
   }
+
+  return NextResponse.json(
+    { message: "Failed to fetch blog", error: "Unknown error" },
+    { status: 500 }
+  );
+}
 }

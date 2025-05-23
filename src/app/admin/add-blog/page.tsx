@@ -188,6 +188,7 @@ import { uploadImageToCloudinary }  from "../../../../lib/uploadToCloudinary";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/utils/cn";
 import "react-quill/dist/quill.snow.css";
+import Image from "next/image";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -378,13 +379,24 @@ const AddBlogPage: React.FC = () => {
                   Drag & drop an image here, or click to select
                 </p>
               )}
-              {imageUrl && (
+              {/* {imageUrl && (
                 <img
                   src={imageUrl}
                   alt="Uploaded preview"
                   className="mt-4 rounded-md max-h-48 mx-auto"
                 />
-              )}
+              )} */}
+              {imageUrl && (
+  <div className="relative mt-4 mx-auto" style={{ width: 'auto', height: '192px' }}>
+    <Image
+      src={imageUrl}
+      alt="Uploaded preview"
+      layout="fill"
+      objectFit="contain"
+      className="rounded-md"
+    />
+  </div>
+)}
             </div>
           </div>
 

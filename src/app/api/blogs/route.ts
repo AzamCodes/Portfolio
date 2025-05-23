@@ -52,112 +52,156 @@
 
 
 //****************** */
-import { NextRequest, NextResponse } from 'next/server'
+import {  NextResponse } from 'next/server'
 import { connectDB } from '../../../../lib/db'
 import { Blog } from '../../../../models/BlogModel'
 
-// export async function GET(req: NextRequest) {
-//   try {
-//     await connectDB()
+// // export async function GET(req: NextRequest) {
+// //   try {
+// //     await connectDB()
 
-//     const { searchParams } = new URL(req.url)
-//     const query = searchParams.get('query') || '' // Optional search query
+// //     const { searchParams } = new URL(req.url)
+// //     const query = searchParams.get('query') || '' // Optional search query
 
-//     const filter: any = {}
+// //     const filter: any = {}
 
-//     if (query) {
-//       filter.$or = [
-//         { title: { $regex: query, $options: 'i' } },
-//         { description: { $regex: query, $options: 'i' } },
-//       ]
-//     }
+// //     if (query) {
+// //       filter.$or = [
+// //         { title: { $regex: query, $options: 'i' } },
+// //         { description: { $regex: query, $options: 'i' } },
+// //       ]
+// //     }
 
-//     const blogs = await Blog.find(filter).sort({ createdAt: -1 })
+// //     const blogs = await Blog.find(filter).sort({ createdAt: -1 })
 
-//     return NextResponse.json({
-//       blogs,
-//     })
-//   } catch (error: any) {
-//     console.error('Error fetching blogs:', error)
-//     return NextResponse.json(
-//       { message: 'Failed to fetch blogs', error: error.message },
-//       { status: 500 }
-//     )
+// //     return NextResponse.json({
+// //       blogs,
+// //     })
+// //   } catch (error: any) {
+// //     console.error('Error fetching blogs:', error)
+// //     return NextResponse.json(
+// //       { message: 'Failed to fetch blogs', error: error.message },
+// //       { status: 500 }
+// //     )
+// //   }
+// // }
+// // app/api/blogs/route.ts
+// // import { NextRequest, NextResponse } from 'next/server'
+// // import { connectDB } from '@/lib/db'
+// // import { Blog } from '@/models/BlogModel'
+
+// // export async function GET(req: NextRequest) {
+// //   try {
+// //     // 1) Connect to Mongo
+// //     await connectDB()
+
+// //     // 2) Pull 'query' from the URL, defaulting to ''
+// //     const { searchParams } = new URL(req.url)
+// //     const q = (searchParams.get('query') || '').trim()
+
+// //     // 3) Build filter: if q, search title OR description
+// //     const filter: Record<string, any> = {}
+// //     if (q) {
+// //       filter.$or = [
+// //         { title:       { $regex: q, $options: 'i' } },
+// //         { description: { $regex: q, $options: 'i' } },
+// //       ]
+// //     }
+
+// //     // 4) Fetch all matching blogs, newest first
+// //     const blogs = await Blog.find(filter).sort({ createdAt: -1 })
+
+// //     // 5) If there's a query, also slice out lightweight suggestions
+// //     if (q) {
+// //       const suggestions = blogs
+// //         .slice(0, 5)
+// //         .map(({ slug, title }) => ({ slug, title }))
+
+// //       return NextResponse.json({ blogs, suggestions })
+// //     }
+
+// //     // 6) No query → just return full list
+// //     return NextResponse.json({ blogs })
+// //   } catch (err: any) {
+// //     console.error('Error fetching blogs:', err)
+// //     return NextResponse.json(
+// //       { message: 'Failed to fetch blogs', error: err.message },
+// //       { status: 500 }
+// //     )
+// //   }
+// // }
+
+// // pages/api/blogs.ts
+// import type { NextApiRequest, NextApiResponse } from 'next'
+// // import { connectDB } from '@/lib/db'
+// // import { Blog } from '@/models/BlogModel'
+
+
+// export async function GET(req: Request) {
+//   await connectDB()
+
+//   const { searchParams } = new URL(req.url)
+//   const q = (searchParams.get('query') || '').trim()
+
+//   const filter: any = {}
+
+//   if (q) {
+//     filter.$or = [
+//       { title: { $regex: q, $options: 'i' } },
+//       { description: { $regex: q, $options: 'i' } },
+//     ]
 //   }
-// }
-// app/api/blogs/route.ts
-// import { NextRequest, NextResponse } from 'next/server'
-// import { connectDB } from '@/lib/db'
-// import { Blog } from '@/models/BlogModel'
 
-// export async function GET(req: NextRequest) {
-//   try {
-//     // 1) Connect to Mongo
-//     await connectDB()
+//   const blogs = await Blog.find(filter).sort({ createdAt: -1 })
 
-//     // 2) Pull 'query' from the URL, defaulting to ''
-//     const { searchParams } = new URL(req.url)
-//     const q = (searchParams.get('query') || '').trim()
+//   const suggestions = blogs.slice(0, 5).map(b => ({
+//     slug: b.slug,
+//     title: b.title,
+//   }))
 
-//     // 3) Build filter: if q, search title OR description
-//     const filter: Record<string, any> = {}
-//     if (q) {
-//       filter.$or = [
-//         { title:       { $regex: q, $options: 'i' } },
-//         { description: { $regex: q, $options: 'i' } },
-//       ]
-//     }
-
-//     // 4) Fetch all matching blogs, newest first
-//     const blogs = await Blog.find(filter).sort({ createdAt: -1 })
-
-//     // 5) If there's a query, also slice out lightweight suggestions
-//     if (q) {
-//       const suggestions = blogs
-//         .slice(0, 5)
-//         .map(({ slug, title }) => ({ slug, title }))
-
-//       return NextResponse.json({ blogs, suggestions })
-//     }
-
-//     // 6) No query → just return full list
-//     return NextResponse.json({ blogs })
-//   } catch (err: any) {
-//     console.error('Error fetching blogs:', err)
-//     return NextResponse.json(
-//       { message: 'Failed to fetch blogs', error: err.message },
-//       { status: 500 }
-//     )
-//   }
+//   return NextResponse.json({ blogs, suggestions })
 // }
 
-// pages/api/blogs.ts
-import type { NextApiRequest, NextApiResponse } from 'next'
-// import { connectDB } from '@/lib/db'
-// import { Blog } from '@/models/BlogModel'
 
+// import { NextResponse } from 'next/server';
+// import { connectDB } from '@/lib/db';
+// import { Blog } from '@/models/BlogModel';
 
 export async function GET(req: Request) {
-  await connectDB()
+  try {
+    await connectDB();
 
-  const { searchParams } = new URL(req.url)
-  const q = (searchParams.get('query') || '').trim()
+    const { searchParams } = new URL(req.url);
+    const q = (searchParams.get('query') || '').trim();
 
-  const filter: any = {}
+    const filter: Record<string, unknown> = {};
+    if (q) {
+      filter.$or = [
+        { title: { $regex: q, $options: 'i' } },
+        { description: { $regex: q, $options: 'i' } },
+      ];
+    }
 
-  if (q) {
-    filter.$or = [
-      { title: { $regex: q, $options: 'i' } },
-      { description: { $regex: q, $options: 'i' } },
-    ]
+    const blogs = await Blog.find(filter).sort({ createdAt: -1 });
+
+    const suggestions = q
+      ? blogs.slice(0, 5).map(({ slug, title }) => ({ slug, title }))
+      : undefined;
+
+    return NextResponse.json({ blogs, ...(suggestions && { suggestions }) });
+  } catch (err: unknown) {
+    console.error('Error fetching blogs:', err);
+
+    if (err instanceof Error) {
+      return NextResponse.json(
+        { message: 'Failed to fetch blogs', error: err.message },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json(
+      { message: 'Failed to fetch blogs', error: 'Unknown error' },
+      { status: 500 }
+    );
   }
-
-  const blogs = await Blog.find(filter).sort({ createdAt: -1 })
-
-  const suggestions = blogs.slice(0, 5).map(b => ({
-    slug: b.slug,
-    title: b.title,
-  }))
-
-  return NextResponse.json({ blogs, suggestions })
 }
