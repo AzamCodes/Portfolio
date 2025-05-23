@@ -238,9 +238,9 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                 <HoverEffectBox color="purple">
                   <ContactDetailsButton
                     icon={<FileText size={22} className="text-purple-500" />}
-                    title="WhatsApp"
-                    subtitle="+91 859 127 2660"
-                    link="https://wa.me/1234567890"
+                    title="Resume"
+                    subtitle="View Resume"
+                    link="https://drive.google.com/file/d/1cM6w3RQVkssbY9Pk85PWy-BUxhGLUb_u/view?usp=drive_link"
                   />
                   {/* <button
                     onClick={() => setShowPdfViewer(!showPdfViewer)} // Toggle the PDF viewer
