@@ -12,8 +12,9 @@ import { HoverEffectBox } from "./ui/HoverEffectBox";
 import { cn } from "@/utils/cn";
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import { Spotlight } from "./ui/Spotlight";
+import { sendEmail } from "@/utils/sendEmail";
 interface ContactSectionProps {
   id: string;
 }
@@ -25,65 +26,94 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ id }) => {
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const triggerEmail = async (templateParams: {
-    user_firstname: string;
-    user_lastname: string;
-    to_name: string;
-    user_message: string;
-    user_email: string;
-  }) => {
-    try {
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_NEXREACT_SERVICE_ID ?? "",
-        process.env.NEXT_PUBLIC_NEXREACT_TEMPLATE_ID ?? "",
-        templateParams,
-        process.env.NEXT_PUBLIC_NEXREACT_PUBLIC_ID!
-      );
-      toast.success("Thank you for your message!");
-    } catch (err) {
-      // console.error("Email sending failed:", err);
-      toast.error("Something went wrong");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+//   const triggerEmail = async (templateParams: {
+//     user_firstname: string;
+//     user_lastname: string;
+//     to_name: string;
+//     user_message: string;
+//     user_email: string;
+//   }) => {
+//     try {
+//       await emailjs.send(
+//         process.env.NEXT_PUBLIC_NEXREACT_SERVICE_ID ?? "",
+//         process.env.NEXT_PUBLIC_NEXREACT_TEMPLATE_ID ?? "",
+//         templateParams,
+//         process.env.NEXT_PUBLIC_NEXREACT_PUBLIC_ID!
+//       );
+//       toast.success("Thank you for your message!");
+//     } catch (err) {
+//       // console.error("Email sending failed:", err);
+//       toast.error("Something went wrong");
+//     } finally {
+//       setIsLoading(false);
+//     }
+//   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+//   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+//     e.preventDefault();
 
-    if (!firstname || !lastname) {
-      return;
-    }
-    if (!email) {
-      return;
-    }
-    if (!message) {
-      return;
-    }
-    setIsLoading(true);
-    // console.log("Input Values:");
-    // console.log("Firstname:", firstname);
-    // console.log("Lastname:", lastname);
-    // console.log("Email:", email);
-    // console.log("Message:", message);
+//     if (!firstname || !lastname) {
+//       return;
+//     }
+//     if (!email) {
+//       return;
+//     }
+//     if (!message) {
+//       return;
+//     }
+//     setIsLoading(true);
+//     // console.log("Input Values:");
+//     // console.log("Firstname:", firstname);
+//     // console.log("Lastname:", lastname);
+//     // console.log("Email:", email);
+//     // console.log("Message:", message);
 
-    const templateParams = {
-      user_firstname: firstname,
-      user_lastname: lastname,
-      to_name: "Azam Shaikh",
-      user_message: message,
-      user_email: email,
-    };
+//     const templateParams = {
+//       user_firstname: firstname,
+//       user_lastname: lastname,
+//       to_name: "Azam Shaikh",
+//       user_message: message,
+//       user_email: email,
+//     };
 
-    // console.log("Template Params:", templateParams);
-    triggerEmail(templateParams);
+//     // console.log("Template Params:", templateParams);
+//     triggerEmail(templateParams);
+// await sendEmail(templateParams,()=>{
 
-    // Clear input fields after submission
-    setFirstname("");
-    setLastname("");
-    setEmail("");
-    setMessage("");
-  };
+  
+//   // Clear input fields after submission
+//   setFirstname("");
+//   setLastname("");
+//   setEmail("");
+//   setMessage("");
+// }
+// )
+// };
+
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  if (!firstname || !lastname || !email || !message) return;
+
+  setIsLoading(true);
+  try {
+    await sendEmail(
+      firstname,
+      lastname,
+      email,
+      message,
+      () => {
+        setFirstname("");
+        setLastname("");
+        setEmail("");
+        setMessage("");
+      }
+    );
+  } catch (err) {
+    console.error(err);
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   return (
     <div className="py-24 bg-black/95 text-white px-6" id={id}>

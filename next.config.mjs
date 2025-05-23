@@ -8,7 +8,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "unsplash.com",
+        hostname: "plus.unsplash.com",
       },
       {
         protocol: "https",
@@ -17,7 +17,11 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "api.microlink.io",
-      },
+      },  {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      }
+      
     ], // Updated from domains to remotePatterns
   },
 };

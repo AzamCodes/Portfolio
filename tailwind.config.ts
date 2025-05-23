@@ -25,6 +25,7 @@ const config: Config = {
         customShadow: `0 6px 20px rgba(0, 0, 0, 0.3)`,
       },
       fontFamily: {
+        satoshi: ['Satoshi', 'sans-serif'],
         agrandirGrandHeavy: [
           "var(--font-agrandir-grandheavy)",
           ...defaultTheme.fontFamily.sans, // Use defaultTheme.fontFamily.sans

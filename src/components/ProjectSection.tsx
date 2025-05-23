@@ -13,7 +13,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ id }) => {
       className="py-24 bg-[#000000] flex items-center justify-center flex-col"
     >
       <div className="text-center">
-        <h1 className="text-3xl md:text-5xl font-agrandirGrandHeavy pb-8 text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#F0F0F0] to-[#DADADA]">
+        <h1 className="text-3xl md:text-5xl uppercase font-agrandirGrandHeavy pb-8 text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#F0F0F0] to-[#DADADA]">
           Projects
         </h1>
       </div>

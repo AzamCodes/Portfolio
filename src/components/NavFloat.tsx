@@ -53,6 +53,19 @@ export function FloatingNav() {
       ),
       href: "#", // Add correct link for Tech Stack
     },
+     {
+      title: "Blogs",
+      icon: (
+        <IconHome
+          className={`h-6 w-6 md:h-full md:w-full ${
+            pathname === "/"
+              ? "dark:text-gradient-to-t dark:from-[rgba(164,202,227,1)] dark:to-[rgba(221,235,243,0.7)]"
+              : "text-neutral-500 dark:text-neutral-300"
+          }`}
+        />
+      ),
+      href: "/",
+    }
   ];
 
   return (

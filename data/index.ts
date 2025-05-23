@@ -26,6 +26,8 @@ export const usefulLinks = [
   { name: "Skills", path: "#skills" },
   { name: "Services", path: "#services" },
   { name: "Contact", path: "#contact" },
+  { name: "Blogs", path: "/blogs" },
+
 ];
 
 export const socialLinks = [

@@ -43,7 +43,7 @@ const cardData = [
 const CardRevealSection: React.FC<ServiceSectionProps> = ({ id }) => {
   return (
     <div id={id} className="py-24 mx-auto bg-[#000000]">
-      <h1 className="text-3xl md:text-5xl font-agrandirGrandHeavy pb-8 md:pb-12 text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#F0F0F0] to-[#DADADA] text-center">
+      <h1 className="text-3xl uppercase md:text-5xl font-agrandirGrandHeavy pb-8 md:pb-12 text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] via-[#F0F0F0] to-[#DADADA] text-center">
         Explore My Talents
       </h1>
       <div className="max-w-[70rem] flex flex-col lg:flex-row items-center justify-center w-full gap-4 mx-auto px-8">
