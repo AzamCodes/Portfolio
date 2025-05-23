@@ -75,7 +75,7 @@ interface Blog {
 }
 
 async function getBlogData(slug: string): Promise<Blog> {
-  const res = await fetch(`http://localhost:3000/api/blogs/${slug}`, {
+  const res = await fetch(`https://www.azamportfolio.com/api/blogs/${slug}`, {
     cache: "no-store",
   });
 
