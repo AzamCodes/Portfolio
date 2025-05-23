@@ -53,7 +53,7 @@
    <div className="w-full md:w-[15%]">
       <div className="sticky top-28 flex flex-col items-center gap-4">
         <h3 className="text-sm font-semibold text-gray-600 dark:text-gray-300">Share</h3>
-        <SocialIcon url={`http://localhost:3000/blogs/${blog.slug}`} title={blog.title} />
+        <SocialIcon url={`https://www.azamportfolio.com/blogs/${blog.slug}`} title={blog.title} />
       </div>
     </div>
   </div>
