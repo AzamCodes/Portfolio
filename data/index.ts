@@ -166,7 +166,7 @@ export const projects = [
       "Prisma & NeonDB",
       "MongoDB",
     ],
-    img: "/pro2.png",
+    img: "https://res.cloudinary.com/dkgbo2py8/image/upload/v1748028395/Screenshot_from_2025-05-24_00-56-10_yiq2l5.png",
     prevlink: "https://devbloghub.vercel.app/",
     githubLink: "https://github.com/azamcodes/devbloghub",
     tags: ["Next Js", "Prisma", "NeonDB", "React"],
