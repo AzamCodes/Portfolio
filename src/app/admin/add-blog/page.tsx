@@ -247,7 +247,7 @@ const AddBlogPage: React.FC = () => {
     };
 
     try {
-      const res = await fetch("/api/blog/create", {
+      const res = await fetch("/api/blogs/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(blogData),
